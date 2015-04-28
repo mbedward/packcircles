@@ -1,0 +1,46 @@
+---
+title: "Example: layout and draw random circles"
+author: "Michael Bedward"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Simple example}
+  %\VignetteEngine{knitr::rmarkdown}
+  \usepackage[utf8]{inputenc}
+---
+
+First create centre coordinates and radii for some random circles:
+
+```{r}
+library(packcircles)
+
+N <- 300
+xmax <- 200
+ymax <- 100
+rmax <- 20
+
+xyr <- data.frame(
+  x = runif(N, 0, xmax),
+  y = runif(N, 0, ymax),
+  r = rbeta(N, 1, 5) * rmax)
+```
+
+Next, search for a non-overlapping layout:
+
+```{r}
+res <- circleLayout(xyr, xmax, ymax, max.iter = 1000)
+cat(res$niter, "iterations performed")
+```
+
+Finally, draw the circles:
+
+```{r, fig.width=6, fig.height=4}
+library(ggplot2)
+plotdat <- circlePlotData(res$layout)
+
+ggplot(plotdat, aes(x, y, group=id)) +
+  geom_path(colour="steelblue") +
+  coord_equal(xlim=c(0, xmax), ylim=c(0, ymax)) +
+  theme_bw()
+```
+
