@@ -15,3 +15,14 @@ layout) or a maximum number of iterations is reached (layout failure). To
 avoid edge effects, the bounding rectangle is treated as a toroid. Each
 circle's centre is constrained to lie within the rectangle but its edges are
 allowed to extend outside.
+
+## TODO
+
+- Allow a specified amount of overlap.
+- Unbounded circle packing where we allow the layout to expand as required.
+- Other bounding shapes.
+- Allow differential overlap, e.g. circles assigned to two groups, with some
+  specified amount of overlap allowed between circles from different groups.
+ 
+
+
