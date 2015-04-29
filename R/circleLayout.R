@@ -16,8 +16,8 @@
 #' 
 #' @export
 #' 
-circleLayout <- function(xyr, xbound, ybound, max.iter) {
-  if (!is.data.frame(xyr) || is.matrix(xyr))
+circleLayout <- function(xyr, xbound, ybound, max.iter=1000) {
+  if ( !(is.data.frame(xyr) || is.matrix(xyr)) )
     stop("argument xyr must be a data.frame or matrix")
   
   if (ncol(xyr) != 3)

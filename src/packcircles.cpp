@@ -7,18 +7,19 @@ double toToroid(double ord, double lim);
 int do_repulsion(NumericMatrix xyr, int c0, int c1, double xbound, double ybound);
 
 
-//' Attempts to position circles without overlap.
-//' 
-//' Given an input matrix of circle positions and sizes, attempts to position them
-//' without overlap by iterating the pair-repulsion algorithm.
-//' 
-//' @param xyr 3 column matrix (centre x, centre y, radius)
-//' @param xbound limit in X direction
-//' @param ybound limit in Y direction
-//' @param maxiter maximum number of iterations
-//' 
-//' @return the number of iterations performed.
-//' 
+// Attempts to position circles without overlap.
+// 
+// Given an input matrix of circle positions and sizes, attempts to position them
+// without overlap by iterating the pair-repulsion algorithm.
+// 
+// @param xyr 3 column matrix (centre x, centre y, radius)
+// @param xbound limit in X direction
+// @param ybound limit in Y direction
+// @param maxiter maximum number of iterations
+// 
+// @return the number of iterations performed.
+// 
+// [[Rcpp::export]]
 int iterate_layout(NumericMatrix xyr, double xbound, double ybound, int maxiter) {
   int rows = xyr.nrow();
   int iter;

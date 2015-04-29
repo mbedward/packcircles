@@ -1,5 +1,5 @@
 ---
-title: "Example: layout and draw random circles"
+title: "Simple example"
 author: "Michael Bedward"
 date: "`r Sys.Date()`"
 output: rmarkdown::html_vignette
@@ -9,38 +9,66 @@ vignette: >
   \usepackage[utf8]{inputenc}
 ---
 
-First create centre coordinates and radii for some random circles:
+In this example we will:
+
+* create a set of randomly positioned, overlapping circles of various sizes;
+* use the `circleLayout` function to find a non-overlapping arrangement;
+* use `ggplot` to draw the before and after arrangements.
+
+Firstly lets create some random circles, positioned within the central portion
+of a bounding square, with smaller circles being more common than larger ones.
+
+```{r}
+
+ncircles <- 200
+xmax <- 100
+ymax <- 100
+inset <- xmax / 3
+rmax <- 20
+
+xyr <- data.frame(
+  x = runif(ncircles, inset, xmax - inset),
+  y = runif(ncircles, inset, ymax - inset),
+  r = rbeta(ncircles, 1, 10) * rmax)
+```
+
+Next, we use the `circleLayout` function to try to find a non-overlapping
+arragement, allowing the circles to occupy any part of the bounding square.
+The returned value is a list with elements for the layout and the number
+of iterations performed.
 
 ```{r}
 library(packcircles)
 
-N <- 300
-xmax <- 200
-ymax <- 100
-rmax <- 20
-
-xyr <- data.frame(
-  x = runif(N, 0, xmax),
-  y = runif(N, 0, ymax),
-  r = rbeta(N, 1, 5) * rmax)
-```
-
-Next, search for a non-overlapping layout:
-
-```{r}
 res <- circleLayout(xyr, xmax, ymax, max.iter = 1000)
 cat(res$niter, "iterations performed")
 ```
 
-Finally, draw the circles:
+Now we can use ggplot to draw the before and after layouts.
 
-```{r, fig.width=6, fig.height=4}
+```{r, fig.width=7, fig.height=4}
 library(ggplot2)
-plotdat <- circlePlotData(res$layout)
+library(gridExtra)
 
-ggplot(plotdat, aes(x, y, group=id)) +
-  geom_path(colour="steelblue") +
+## plot data for the `before` layout
+dat.before <- circlePlotData(xyr)
+
+## plot dta for the `after` layout returned by circleLayout
+dat.after <- circlePlotData(res$layout)
+
+doPlot <- function(dat, title)
+  ggplot(dat) + 
+  geom_polygon(aes(x, y, group=id), colour="brown", fill="burlywood", alpha=0.3) +
   coord_equal(xlim=c(0, xmax), ylim=c(0, ymax)) +
-  theme_bw()
+  theme_bw() +
+  theme(axis.text=element_blank(),
+        axis.ticks=element_blank(),
+        axis.title=element_blank()) +
+  labs(title=title)
+
+grid.arrange(
+  doPlot(dat.before, "before"),
+  doPlot(dat.after, "after"),
+  nrow=1)
 ```
 

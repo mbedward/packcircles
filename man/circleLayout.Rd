@@ -4,7 +4,7 @@
 \alias{circleLayout}
 \title{Find non-overlapping layout of circles.}
 \usage{
-circleLayout(xyr, xbound, ybound, max.iter)
+circleLayout(xyr, xbound, ybound, max.iter = 1000)
 }
 \arguments{
 \item{xyr}{3-column matrix or data.frame (centre X, centre Y, radius)}
