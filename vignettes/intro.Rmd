@@ -21,14 +21,13 @@ of a bounding square, with smaller circles being more common than larger ones.
 ```{r}
 
 ncircles <- 200
-xmax <- 100
-ymax <- 100
-inset <- xmax / 3
+limits <- c(-50, 50)
+inset <- diff(limits) / 3
 rmax <- 20
 
 xyr <- data.frame(
-  x = runif(ncircles, inset, xmax - inset),
-  y = runif(ncircles, inset, ymax - inset),
+  x = runif(ncircles, min(limits) + inset, max(limits) - inset),
+  y = runif(ncircles, min(limits) + inset, max(limits) - inset),
   r = rbeta(ncircles, 1, 10) * rmax)
 ```
 
@@ -40,7 +39,7 @@ of iterations performed.
 ```{r}
 library(packcircles)
 
-res <- circleLayout(xyr, xmax, ymax, max.iter = 1000)
+res <- circleLayout(xyr, limits, limits, maxiter = 1000)
 cat(res$niter, "iterations performed")
 ```
 
@@ -59,7 +58,7 @@ dat.after <- circlePlotData(res$layout)
 doPlot <- function(dat, title)
   ggplot(dat) + 
   geom_polygon(aes(x, y, group=id), colour="brown", fill="burlywood", alpha=0.3) +
-  coord_equal(xlim=c(0, xmax), ylim=c(0, ymax)) +
+  coord_equal(xlim=limits, ylim=limits) +
   theme_bw() +
   theme(axis.text=element_blank(),
         axis.ticks=element_blank(),

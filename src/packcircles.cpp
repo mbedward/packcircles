@@ -3,8 +3,10 @@ using namespace Rcpp;
 
 // Forward declarations
 //
-double toToroid(double ord, double lim);
-int do_repulsion(NumericMatrix xyr, int c0, int c1, double xbound, double ybound);
+double wrapOrdinate(double x, double lo, double hi);
+
+int do_repulsion(NumericMatrix xyr, int c0, int c1, 
+                 double xmin, double xmax, double ymin, double ymax);
 
 
 // Attempts to position circles without overlap.
@@ -13,14 +15,20 @@ int do_repulsion(NumericMatrix xyr, int c0, int c1, double xbound, double ybound
 // without overlap by iterating the pair-repulsion algorithm.
 // 
 // @param xyr 3 column matrix (centre x, centre y, radius)
-// @param xbound limit in X direction
-// @param ybound limit in Y direction
+// @param xmin lower X bound
+// @param xmax upper X bound
+// @param ymin lower Y bound
+// @param ymax upper Y bound
 // @param maxiter maximum number of iterations
 // 
 // @return the number of iterations performed.
 // 
 // [[Rcpp::export]]
-int iterate_layout(NumericMatrix xyr, double xbound, double ybound, int maxiter) {
+int iterate_layout(NumericMatrix xyr, 
+                   double xmin, double xmax, 
+                   double ymin, double ymax,
+                   int maxiter) {
+                     
   int rows = xyr.nrow();
   int iter;
   
@@ -28,7 +36,7 @@ int iterate_layout(NumericMatrix xyr, double xbound, double ybound, int maxiter)
     int moved = 0;
     for (int i = 0; i < rows-1; ++i) {
       for (int j = i+1; j < rows; ++j) {
-        if (do_repulsion(xyr, i, j, xbound, ybound)) {
+        if (do_repulsion(xyr, i, j, xmin, xmax, ymin, ymax)) {
           moved = 1;
         }
       }
@@ -48,10 +56,16 @@ int iterate_layout(NumericMatrix xyr, double xbound, double ybound, int maxiter)
  * xyr     - 3 column matrix of circle positions and sizes (x, y, radius)
  * c0      - index of first circle
  * c1      - index of second circle
- * xbound  - limit in X direction
- * ybound  - limit in Y direction
+ * xmin    - bounds min X
+ * xmax    - bounds max X
+ * ymin    - bounds min Y
+ * ymax    - bounds max Y
  */
-int do_repulsion(NumericMatrix xyr, int c0, int c1, double xbound, double ybound) {
+int do_repulsion(NumericMatrix xyr, 
+                 int c0, int c1, 
+                 double xmin, double xmax, 
+                 double ymin, double ymax) {
+                   
     static double REPEL_TOL = 0.0001;
     
     double dx = xyr(c1, 0) - xyr(c0, 0);
@@ -72,10 +86,10 @@ int do_repulsion(NumericMatrix xyr, int c0, int c1, double xbound, double ybound
       w0 = xyr(c1, 2) / r;
       w1 = xyr(c0, 2) / r;
 
-      xyr(c1, 0) = toToroid( xyr(c1, 0) + p*dx*w1, xbound );
-      xyr(c1, 1) = toToroid( xyr(c1, 1) + p*dy*w1, ybound );
-      xyr(c0, 0) = toToroid( xyr(c0, 0) - p*dx*w0, xbound );
-      xyr(c0, 1) = toToroid( xyr(c0, 1) - p*dy*w0, ybound );
+      xyr(c1, 0) = wrapOrdinate( xyr(c1, 0) + p*dx*w1, xmin, xmax );
+      xyr(c1, 1) = wrapOrdinate( xyr(c1, 1) + p*dy*w1, ymin, ymax );
+      xyr(c0, 0) = wrapOrdinate( xyr(c0, 0) - p*dx*w0, xmin, xmax );
+      xyr(c0, 1) = wrapOrdinate( xyr(c0, 1) - p*dy*w0, ymin, ymax );
 
       return(1);
     }
@@ -85,13 +99,15 @@ int do_repulsion(NumericMatrix xyr, int c0, int c1, double xbound, double ybound
 
 
 /*
- * Map an X or Y ordinate to the toroidal interval [0, lim).
+ * Map an X or Y ordinate to the toroidal interval [lo, hi).
  *
- * ord - X or Y ordinate to be adjusted
- * lim - bounding ordinate
+ * x  - X or Y ordinate to be adjusted
+ * lo - lower coordinate bound
+ * hi - upper coordinate bound
  */
-double toToroid(double ord, double lim) {
-  while (ord < 0.0) ord += lim;
-  while (ord >= lim) ord -= lim;
-  return ord;
+double wrapOrdinate(double x, double lo, double hi) {
+  double w = hi - lo;
+  while (x < lo) x += w;
+  while (x >= hi) x -= w;
+  return x;
 }

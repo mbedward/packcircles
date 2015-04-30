@@ -4,16 +4,18 @@
 \alias{circleLayout}
 \title{Find non-overlapping layout of circles.}
 \usage{
-circleLayout(xyr, xbound, ybound, max.iter = 1000)
+circleLayout(xyr, xlim, ylim, maxiter = 1000)
 }
 \arguments{
 \item{xyr}{3-column matrix or data.frame (centre X, centre Y, radius)}
 
-\item{xbound}{X upper limit (lower assumed 0)}
+\item{xlim}{bounds in the X direction; either a vector for [xmin, xmax)
+or a single value interpreted as [0, xmax)}
 
-\item{ybound}{Y upper limit (lower assumed 0)}
+\item{ylim}{bounds in the Y direction; either a vector for [ymin, ymax)
+or a single value interpreted as [0, ymax)}
 
-\item{max.iter}{maximum number of iterations to attempt}
+\item{maxiter}{maximum number of iterations to attempt}
 }
 \value{
 A list with components:

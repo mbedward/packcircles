@@ -6,16 +6,18 @@
 using namespace Rcpp;
 
 // iterate_layout
-int iterate_layout(NumericMatrix xyr, double xbound, double ybound, int maxiter);
-RcppExport SEXP packcircles_iterate_layout(SEXP xyrSEXP, SEXP xboundSEXP, SEXP yboundSEXP, SEXP maxiterSEXP) {
+int iterate_layout(NumericMatrix xyr, double xmin, double xmax, double ymin, double ymax, int maxiter);
+RcppExport SEXP packcircles_iterate_layout(SEXP xyrSEXP, SEXP xminSEXP, SEXP xmaxSEXP, SEXP yminSEXP, SEXP ymaxSEXP, SEXP maxiterSEXP) {
 BEGIN_RCPP
     Rcpp::RObject __result;
     Rcpp::RNGScope __rngScope;
     Rcpp::traits::input_parameter< NumericMatrix >::type xyr(xyrSEXP);
-    Rcpp::traits::input_parameter< double >::type xbound(xboundSEXP);
-    Rcpp::traits::input_parameter< double >::type ybound(yboundSEXP);
+    Rcpp::traits::input_parameter< double >::type xmin(xminSEXP);
+    Rcpp::traits::input_parameter< double >::type xmax(xmaxSEXP);
+    Rcpp::traits::input_parameter< double >::type ymin(yminSEXP);
+    Rcpp::traits::input_parameter< double >::type ymax(ymaxSEXP);
     Rcpp::traits::input_parameter< int >::type maxiter(maxiterSEXP);
-    __result = Rcpp::wrap(iterate_layout(xyr, xbound, ybound, maxiter));
+    __result = Rcpp::wrap(iterate_layout(xyr, xmin, xmax, ymin, ymax, maxiter));
     return __result;
 END_RCPP
 }
