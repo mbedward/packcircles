@@ -1,12 +1,15 @@
 #include <Rcpp.h>
 using namespace Rcpp;
 
+
 // Forward declarations
 //
+double ordinate(double x, double lo, double hi, bool wrap);
+
 double wrapOrdinate(double x, double lo, double hi);
 
 int do_repulsion(NumericMatrix xyr, int c0, int c1, 
-                 double xmin, double xmax, double ymin, double ymax);
+                 double xmin, double xmax, double ymin, double ymax, bool wrap);
 
 
 // Attempts to position circles without overlap.
@@ -20,14 +23,16 @@ int do_repulsion(NumericMatrix xyr, int c0, int c1,
 // @param ymin lower Y bound
 // @param ymax upper Y bound
 // @param maxiter maximum number of iterations
-// 
+// @param wrap true to allow coordinate wrapping across opposite bounds 
+//
 // @return the number of iterations performed.
 // 
 // [[Rcpp::export]]
 int iterate_layout(NumericMatrix xyr, 
                    double xmin, double xmax, 
                    double ymin, double ymax,
-                   int maxiter) {
+                   int maxiter,
+                   bool wrap) {
                      
   int rows = xyr.nrow();
   int iter;
@@ -36,7 +41,7 @@ int iterate_layout(NumericMatrix xyr,
     int moved = 0;
     for (int i = 0; i < rows-1; ++i) {
       for (int j = i+1; j < rows; ++j) {
-        if (do_repulsion(xyr, i, j, xmin, xmax, ymin, ymax)) {
+        if (do_repulsion(xyr, i, j, xmin, xmax, ymin, ymax, wrap)) {
           moved = 1;
         }
       }
@@ -60,11 +65,13 @@ int iterate_layout(NumericMatrix xyr,
  * xmax    - bounds max X
  * ymin    - bounds min Y
  * ymax    - bounds max Y
+ * wrap    - allow coordinate wrapping across opposite bounds
  */
 int do_repulsion(NumericMatrix xyr, 
                  int c0, int c1, 
                  double xmin, double xmax, 
-                 double ymin, double ymax) {
+                 double ymin, double ymax,
+                 bool wrap) {
                    
     static double REPEL_TOL = 0.0001;
     
@@ -85,16 +92,25 @@ int do_repulsion(NumericMatrix xyr,
 
       w0 = xyr(c1, 2) / r;
       w1 = xyr(c0, 2) / r;
-
-      xyr(c1, 0) = wrapOrdinate( xyr(c1, 0) + p*dx*w1, xmin, xmax );
-      xyr(c1, 1) = wrapOrdinate( xyr(c1, 1) + p*dy*w1, ymin, ymax );
-      xyr(c0, 0) = wrapOrdinate( xyr(c0, 0) - p*dx*w0, xmin, xmax );
-      xyr(c0, 1) = wrapOrdinate( xyr(c0, 1) - p*dy*w0, ymin, ymax );
-
+      
+        xyr(c1, 0) = ordinate( xyr(c1, 0) + p*dx*w1, xmin, xmax, wrap );
+        xyr(c1, 1) = ordinate( xyr(c1, 1) + p*dy*w1, ymin, ymax, wrap );
+        xyr(c0, 0) = ordinate( xyr(c0, 0) - p*dx*w0, xmin, xmax, wrap );
+        xyr(c0, 1) = ordinate( xyr(c0, 1) - p*dy*w0, ymin, ymax, wrap );
+      
       return(1);
     }
-
+    
     return(0);
+}
+
+/*
+ * Adjust an X or Y ordinate to the given bounds by either wrapping
+ * (if `wrap` is true) or clamping (if `wrap` is false).
+ */
+double ordinate(double x, double lo, double hi, bool wrap) {
+  if (wrap) return wrapOrdinate(x, lo, hi);
+  else return std::max(lo, std::min(hi, x));
 }
 
 

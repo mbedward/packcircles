@@ -4,7 +4,7 @@
 \alias{circleLayout}
 \title{Find non-overlapping layout of circles.}
 \usage{
-circleLayout(xyr, xlim, ylim, maxiter = 1000)
+circleLayout(xyr, xlim, ylim, maxiter = 1000, wrap = TRUE)
 }
 \arguments{
 \item{xyr}{3-column matrix or data.frame (centre X, centre Y, radius)}
@@ -16,6 +16,10 @@ or a single value interpreted as [0, xmax)}
 or a single value interpreted as [0, ymax)}
 
 \item{maxiter}{maximum number of iterations to attempt}
+
+\item{wrap}{whether to allow coordinate wrapping across bounds. If `true`,
+  coordinate wrapping results in a toroidal space; if `false`, ordinates
+  are simply restricted to bounds.}
 }
 \value{
 A list with components:

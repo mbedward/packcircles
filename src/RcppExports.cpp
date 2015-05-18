@@ -6,8 +6,8 @@
 using namespace Rcpp;
 
 // iterate_layout
-int iterate_layout(NumericMatrix xyr, double xmin, double xmax, double ymin, double ymax, int maxiter);
-RcppExport SEXP packcircles_iterate_layout(SEXP xyrSEXP, SEXP xminSEXP, SEXP xmaxSEXP, SEXP yminSEXP, SEXP ymaxSEXP, SEXP maxiterSEXP) {
+int iterate_layout(NumericMatrix xyr, double xmin, double xmax, double ymin, double ymax, int maxiter, bool wrap);
+RcppExport SEXP packcircles_iterate_layout(SEXP xyrSEXP, SEXP xminSEXP, SEXP xmaxSEXP, SEXP yminSEXP, SEXP ymaxSEXP, SEXP maxiterSEXP, SEXP wrapSEXP) {
 BEGIN_RCPP
     Rcpp::RObject __result;
     Rcpp::RNGScope __rngScope;
@@ -17,7 +17,8 @@ BEGIN_RCPP
     Rcpp::traits::input_parameter< double >::type ymin(yminSEXP);
     Rcpp::traits::input_parameter< double >::type ymax(ymaxSEXP);
     Rcpp::traits::input_parameter< int >::type maxiter(maxiterSEXP);
-    __result = Rcpp::wrap(iterate_layout(xyr, xmin, xmax, ymin, ymax, maxiter));
+    Rcpp::traits::input_parameter< bool >::type wrap(wrapSEXP);
+    __result = Rcpp::wrap(iterate_layout(xyr, xmin, xmax, ymin, ymax, maxiter, wrap));
     return __result;
 END_RCPP
 }

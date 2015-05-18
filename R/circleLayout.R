@@ -9,6 +9,9 @@
 #' @param ylim bounds in the Y direction; either a vector for [ymin, ymax)
 #'   or a single value interpreted as [0, ymax)
 #' @param maxiter maximum number of iterations to attempt
+#' @param wrap whether to allow coordinate wrapping across bounds. If `true`,
+#'   coordinate wrapping results in a toroidal space; if `false`, ordinates
+#'   are simply restricted to bounds.
 #' 
 #' @return A list with components:
 #'   \describe{
@@ -18,7 +21,7 @@
 #' 
 #' @export
 #' 
-circleLayout <- function(xyr, xlim, ylim, maxiter=1000) {
+circleLayout <- function(xyr, xlim, ylim, maxiter=1000, wrap=TRUE) {
   if ( !(is.data.frame(xyr) || is.matrix(xyr)) )
     stop("argument xyr must be a data.frame or matrix")
   
@@ -33,7 +36,7 @@ circleLayout <- function(xyr, xlim, ylim, maxiter=1000) {
   xlim <- .checkBounds(xlim)
   ylim <- .checkBounds(ylim)
   
-  niter = iterate_layout(m, xlim[1], xlim[2], ylim[1], ylim[2], maxiter)
+  niter = iterate_layout(m, xlim[1], xlim[2], ylim[1], ylim[2], maxiter, wrap)
 
   if (is.data.frame(xyr)) m <- as.data.frame(m)
   list(layout = m, niter = niter)
