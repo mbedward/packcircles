@@ -30,8 +30,12 @@ circleLayout <- function(xyr, xlim, ylim, maxiter=1000, wrap=TRUE) {
   
   if (is.data.frame(xyr))
     m <- as.matrix(xyr)
-  else
-    m <- xyr
+  else {
+    # clone the matrix to prevent the input object 
+    # being altered
+    m <- matrix(as.numeric(xyr), nrow=nrow(xyr), ncol=ncol(xyr))
+    colnames(m) <- colnames(xyr)
+  }
 
   xlim <- .checkBounds(xlim)
   ylim <- .checkBounds(ylim)
