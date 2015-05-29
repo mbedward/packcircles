@@ -53,7 +53,7 @@ circleLayout <- function(xyr, xlim, ylim, maxiter=1000, wrap=TRUE, weights=1.0) 
     if (length(weights) < nrow(xyr)) {
       i <- length(weights)
       weights <- c(weights, rep(weights[i], nrow(xyr) - i))
-    } else if (weights > nrow(xyr)) {
+    } else if (length(weights) > nrow(xyr)) {
       weights <- weights[1:nrow(xyr)]
     }
     
