@@ -4,7 +4,7 @@
 \alias{circleLayout}
 \title{Find non-overlapping layout of circles.}
 \usage{
-circleLayout(xyr, xlim, ylim, maxiter = 1000, wrap = TRUE)
+circleLayout(xyr, xlim, ylim, maxiter = 1000, wrap = TRUE, weights = 1)
 }
 \arguments{
 \item{xyr}{3-column matrix or data.frame (centre X, centre Y, radius)}
@@ -18,8 +18,16 @@ or a single value interpreted as [0, ymax)}
 \item{maxiter}{maximum number of iterations to attempt}
 
 \item{wrap}{whether to allow coordinate wrapping across bounds. If `true`,
-  coordinate wrapping results in a toroidal space; if `false`, ordinates
-  are simply restricted to bounds.}
+coordinate wrapping results in a toroidal space; if `false`, ordinates
+are simply restricted to bounds.}
+
+\item{weights}{an optional vector of numeric weights (0 to 1 inclusive)
+  to apply to the distance each circle moves during pair-repulsion.
+  A weight of 0 prevents any movement. A weight of 1 gives the default
+  movement distance. A single value can be supplied for uniform weights.
+  A vector with length less than the number of circles will be silently
+  extended by repeating the final value. Any values outside the range
+  [0, 1] will be clamped to 0 or 1.}
 }
 \value{
 A list with components:

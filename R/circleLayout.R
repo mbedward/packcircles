@@ -12,6 +12,13 @@
 #' @param wrap whether to allow coordinate wrapping across bounds. If `true`,
 #'   coordinate wrapping results in a toroidal space; if `false`, ordinates
 #'   are simply restricted to bounds.
+#' @param weights an optional vector of numeric weights (0 to 1 inclusive) 
+#'   to apply to the distance each circle moves during pair-repulsion. 
+#'   A weight of 0 prevents any movement. A weight of 1 gives the default
+#'   movement distance. A single value can be supplied for uniform weights.
+#'   A vector with length less than the number of circles will be silently 
+#'   extended by repeating the final value. Any values outside the range
+#'   [0, 1] will be clamped to 0 or 1.
 #' 
 #' @return A list with components:
 #'   \describe{
@@ -21,7 +28,7 @@
 #' 
 #' @export
 #' 
-circleLayout <- function(xyr, xlim, ylim, maxiter=1000, wrap=TRUE) {
+circleLayout <- function(xyr, xlim, ylim, maxiter=1000, wrap=TRUE, weights=1.0) {
   if ( !(is.data.frame(xyr) || is.matrix(xyr)) )
     stop("argument xyr must be a data.frame or matrix")
   
@@ -36,11 +43,29 @@ circleLayout <- function(xyr, xlim, ylim, maxiter=1000, wrap=TRUE) {
     m <- matrix(as.numeric(xyr), nrow=nrow(xyr), ncol=ncol(xyr))
     colnames(m) <- colnames(xyr)
   }
+  
+  if (is.null(weights) || length(weights) == 0) 
+    weights <- rep(1.0, nrow(xyr))
+  else {
+    if (!is.numeric(weights))
+      stop("weights must be a numeric vector with values between 0 and 1")
+    
+    if (length(weights) < nrow(xyr)) {
+      i <- length(weights)
+      weights <- c(weights, rep(weights[i], nrow(xyr) - i))
+    } else if (weights > nrow(xyr)) {
+      weights <- weights[1:nrow(xyr)]
+    }
+    
+    # clamp values to be in the range [0, 1]
+    weights[ weights < 0 ] <- 0
+    weights[ weights > 1 ] <- 1
+  }
 
   xlim <- .checkBounds(xlim)
   ylim <- .checkBounds(ylim)
   
-  niter = iterate_layout(m, xlim[1], xlim[2], ylim[1], ylim[2], maxiter, wrap)
+  niter = iterate_layout(m, weights, xlim[1], xlim[2], ylim[1], ylim[2], maxiter, wrap)
 
   if (is.data.frame(xyr)) m <- as.data.frame(m)
   list(layout = m, niter = niter)
