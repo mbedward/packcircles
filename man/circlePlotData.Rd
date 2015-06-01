@@ -4,12 +4,18 @@
 \alias{circlePlotData}
 \title{Generate plotting data for circles.}
 \usage{
-circlePlotData(xyr, npoints = 25)
+circlePlotData(xyr, npoints = 25, xyr.cols = 1:3, id.col = NULL)
 }
 \arguments{
 \item{xyr}{matrix or data.frame of circle data (x, y, radius)}
 
 \item{npoints}{number of vertices to generate for each circle}
+
+\item{indices}{or names of columns for x, y, radius (in that order).
+Default is columns 1-3.}
+
+\item{optional}{index or name of column for circle IDs in output.
+  Default is to use input row numbers as ID.}
 }
 \value{
 A data.frame with columns: id, x, y; where id is an

@@ -5,3 +5,7 @@ iterate_layout <- function(xyr, weights, xmin, xmax, ymin, ymax, maxiter, wrap) 
     .Call('packcircles_iterate_layout', PACKAGE = 'packcircles', xyr, weights, xmin, xmax, ymin, ymax, maxiter, wrap)
 }
 
+doCirclePack <- function(internalList, externalDF) {
+    .Call('packcircles_doCirclePack', PACKAGE = 'packcircles', internalList, externalDF)
+}
+

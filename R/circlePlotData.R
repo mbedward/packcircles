@@ -5,6 +5,10 @@
 #' 
 #' @param xyr matrix or data.frame of circle data (x, y, radius)
 #' @param npoints number of vertices to generate for each circle
+#' @param indices or names of columns for x, y, radius (in that order).
+#'   Default is columns 1-3.
+#' @param optional index or name of column for circle IDs in output. 
+#'   Default is to use input row numbers as ID.
 #' 
 #' @return A data.frame with columns: id, x, y; where id is an
 #'   integer identifier for each circle.
@@ -38,9 +42,18 @@
 #' 
 #' @export
 #'
-circlePlotData <- function(xyr, npoints=25) {
-  do.call("rbind", lapply(1:nrow(xyr), function(i) {
-    df <- as.data.frame(circleVertices(xyr[i,1], xyr[i,2], xyr[i,3], npoints))
+circlePlotData <- function(xyr, npoints=25, xyr.cols=1:3, id.col=NULL) {
+  if (is.null(id.col))
+    ids <- 1:nrow(xyr)
+  else
+    ids <- xyr[, id.col]
+  
+  do.call("rbind", lapply(ids, function(i) {
+    df <- as.data.frame(
+      circleVertices(xyr[i, xyr.cols[1]], 
+                     xyr[i, xyr.cols[2]], 
+                     xyr[i, xyr.cols[3]], 
+                     npoints) )
     df$id <- i
     df
   }))

@@ -23,3 +23,15 @@ BEGIN_RCPP
     return __result;
 END_RCPP
 }
+// doCirclePack
+List doCirclePack(List internalList, DataFrame externalDF);
+RcppExport SEXP packcircles_doCirclePack(SEXP internalListSEXP, SEXP externalDFSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject __result;
+    Rcpp::RNGScope __rngScope;
+    Rcpp::traits::input_parameter< List >::type internalList(internalListSEXP);
+    Rcpp::traits::input_parameter< DataFrame >::type externalDF(externalDFSEXP);
+    __result = Rcpp::wrap(doCirclePack(internalList, externalDF));
+    return __result;
+END_RCPP
+}
