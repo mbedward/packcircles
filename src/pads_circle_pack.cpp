@@ -1,5 +1,5 @@
 /*
- * Implementats a circle packing algorithm described in:
+ * Implements a circle packing algorithm described in:
  *
  *   Charles R. Collins & Kenneth Stephenson (2003) A circle packing algorithm.
  *     Computation Geometry Theory and Applications 25: 233-256.

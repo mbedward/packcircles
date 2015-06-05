@@ -2,7 +2,7 @@
 % Please edit documentation in R/circleLayout.R
 \name{circleLayout}
 \alias{circleLayout}
-\title{Find non-overlapping layout of circles.}
+\title{Find an arrangement of circles given circle radii and initial positions.}
 \usage{
 circleLayout(xyr, xlim, ylim, maxiter = 1000, wrap = TRUE, weights = 1)
 }

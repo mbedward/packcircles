@@ -1,4 +1,4 @@
-#' Find non-overlapping layout of circles.
+#' Find an arrangement of circles given circle radii and initial positions.
 #' 
 #' Attempts to find a layout for a given set of circles
 #' within a rectangle such that is no overlap between circles.
