@@ -1,8 +1,8 @@
 Package: packcircles
 Type: Package
 Title: Circle packing within rectangular bounds
-Version: 0.1.0
-Date: 2015-04-28
+Version: 0.1.1
+Date: 2015-07-22
 Authors@R: as.person(
   "Michael Bedward <michael.bedward@gmail.com> [aut, cre]")
 Description: Simple algorithm to arrange non-overlapping circles within a rectangle.

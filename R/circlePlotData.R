@@ -11,7 +11,7 @@
 #' @param xyr.cols Indices or names of columns for x, y, radius (in that order).
 #'   Default is columns 1-3.
 #' 
-#' @param Optional index or name of column for circle IDs in output. 
+#' @param id.col Optional index or name of column for circle IDs in output. 
 #'   If not provided, the output circle IDs will be the row numbers of
 #'   the input circle data.
 #' 

@@ -23,7 +23,7 @@
 #' A data.frame with columns for circle ID, centre X and Y ordinate, and radius.
 #'
 #' @note
-#' Treat this as experimental !
+#' Please treat this function as experimental.
 #' 
 #' @references
 #' C.R. Collins & K. Stephenson (2003) An algorithm for circle packing.
