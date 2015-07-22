@@ -1,6 +1,6 @@
 Package: packcircles
 Type: Package
-Title: Circle packing within rectangular bounds
+Title: Circle Packing
 Version: 0.1.1
 Date: 2015-07-22
 Authors@R: as.person(
@@ -8,7 +8,8 @@ Authors@R: as.person(
 Description: Simple algorithm to arrange non-overlapping circles within a rectangle.
 License: MIT + file LICENSE
 Imports: Rcpp (>= 0.11.5)
-Suggests: ggplot2,
-    knitr
+Suggests: ggplot2, 
+  gridExtra, 
+  knitr
 LinkingTo: Rcpp
 VignetteBuilder: knitr
