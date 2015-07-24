@@ -23,9 +23,7 @@ to find an arrangement of circles which corresponds to a graph of desired circle
 The implementation is based on a Python version by David Eppstein (see CirclePack.py in
 the [PADS](http://www.ics.uci.edu/~eppstein/PADS/) library.
 
-## Ideas for further development
+To install:
 
-- Extend `circleLayout` with options for unbounded arrangements or arbitrary bounding polygons.
-
-- Write R functions to interface with the Rcpp code for the graph-based circle packing of
-  Collins and Stephenson.
+* the latest released version: `install.packages("packcircles")`
+* the latest development version: `install_github("mbedward/packcircles")`

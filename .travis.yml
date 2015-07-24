@@ -1,5 +1,3 @@
-# Sample .travis.yml for R projects
-
 language: r
 warnings_are_errors: true
 sudo: required
@@ -7,8 +5,3 @@ sudo: required
 env:
  global:
    - CRAN: http://cran.rstudio.com
-
-notifications:
-  email:
-    on_success: michael.bedward@gmail.com
-    on_failure: michael.bedward@gmail.com

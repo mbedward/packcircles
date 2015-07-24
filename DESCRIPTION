@@ -3,10 +3,10 @@ Type: Package
 Title: Circle Packing
 Version: 0.1.1
 Date: 2015-07-22
-Authors@R: as.person(
-  "Michael Bedward <michael.bedward@gmail.com> [aut, cre]")
+Authors@R: person("Michael", "Bedward", role = c("aut", "cre"), email = "michael.bedward@gmail.com")
 Description: Simple algorithm to arrange non-overlapping circles within a rectangle.
 License: MIT + file LICENSE
+URL: https://github.com/mbedward/packcircles
 Imports: Rcpp (>= 0.11.5)
 Suggests: ggplot2, 
   gridExtra, 
