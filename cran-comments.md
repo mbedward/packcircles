@@ -1,3 +1,6 @@
+## Resubmission
+Fixed for proper use of LICENSE file template.
+
 ## Test environments
 * Ubuntu 12.04 (Travis CI)
 * win-builder (release and devel)
