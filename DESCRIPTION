@@ -5,7 +5,7 @@ Version: 0.1.1
 Date: 2015-07-22
 Authors@R: c(
   person("Michael", "Bedward", role = c("aut", "cre"), email = "michael.bedward@gmail.com"),
-  person("David", "Eppstein", role = "aut", email = david.eppstein@gmail.com", 
+  person("David", "Eppstein", role = "aut", email = "david.eppstein@gmail.com", 
          comment = "Original author of Python code for graph-based circle packing ported to C++ for this package"))
 Description: Simple algorithm to arrange non-overlapping circles within a rectangle.
 License: MIT + file LICENSE
