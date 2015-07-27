@@ -1,7 +1,7 @@
 Package: packcircles
 Type: Package
 Title: Circle Packing
-Version: 0.1.1
+Version: 0.1.1.9000
 Date: 2015-07-22
 Authors@R: c(
   person("Michael", "Bedward", role = c("aut", "cre"), email = "michael.bedward@gmail.com"),
