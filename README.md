@@ -17,7 +17,19 @@ avoid edge effects, the bounding rectangle is treated as a toroid. Each
 circle's centre is constrained to lie within the rectangle but its edges are
 allowed to extend outside.
 
-The package also contains an initial Rcpp port of an algorithm described by
+
+The function `circleProgressiveLayout` arranges a set of circles, which are
+denoted by their sizes, by consecutively placing each circle externally tangent
+to two previously placed circles while avoiding overlaps. It was adapted from a
+[version written in C](https://github.com/pmenzel/packCircles) by Peter Menzel.
+The underlying algorithm is described in the paper: *Visualization of large
+hierarchical data by circle packing* by Weixin Wang, Hui Wang, Guozhong Dai, and
+Hongan Wang. Published in *Proceedings of the SIGCHI Conference on Human Factors
+in Computing Systems*, 2006, pp. 517-520.
+[ACM](https://dl.acm.org/citation.cfm?id=1124851).
+
+
+The function `circleGraphLayout` is an initial Rcpp port of an algorithm described by
 [Collins and Stephenson (2003)](http://www.sciencedirect.com/science/article/pii/S0925772102000998)
 to find an arrangement of circles which corresponds to a graph of desired circle tangencies.
 The implementation is based on a Python version by David Eppstein (see CirclePack.py in
@@ -27,3 +39,6 @@ To install:
 
 * the latest released version: `install.packages("packcircles")`
 * the latest development version: `install_github("mbedward/packcircles")`
+
+Share and enjoy!
+
