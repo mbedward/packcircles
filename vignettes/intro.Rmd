@@ -9,16 +9,11 @@ vignette: >
   \usepackage[utf8]{inputenc}
 ---
 
-In this example we will:
 
-* create a set of randomly positioned, overlapping circles of various sizes;
-* use the `circleLayout` function to find a non-overlapping arrangement;
-* use `ggplot` to draw the before and after arrangements.
-
-Firstly lets create some random circles, positioned within the central portion
-of a bounding square, with smaller circles being more common than larger ones.
 
 ```{r}
+
+set.seed(42)
 
 ncircles <- 200
 limits <- c(-50, 50)
@@ -31,7 +26,7 @@ xyr <- data.frame(
   r = rbeta(ncircles, 1, 10) * rmax)
 ```
 
-Next, we use the `circleLayout` function to try to find a non-overlapping
+Next, we use the `circleRepelLayout` function to try to find a non-overlapping
 arragement, allowing the circles to occupy any part of the bounding square.
 The returned value is a list with elements for the layout and the number
 of iterations performed.
@@ -39,43 +34,48 @@ of iterations performed.
 ```{r}
 library(packcircles)
 
-res <- circleLayout(xyr, limits, limits, maxiter = 1000)
+res <- circleRepelLayout(xyr, limits, limits, maxiter = 1000)
 cat(res$niter, "iterations performed")
+
 ```
 
 Now we can use ggplot to draw the before and after layouts.
 
 ```{r, fig.width=7, fig.height=4}
 library(ggplot2)
-library(gridExtra)
+
+t <- theme_bw() +
+  theme(panel.grid = element_blank(),
+        axis.text=element_blank(),
+        axis.ticks=element_blank(),
+        axis.title=element_blank())
+
+theme_set(t)
+
 
 ## plot data for the `before` layout
 dat.before <- circlePlotData(xyr)
 
-## plot dta for the `after` layout returned by circleLayout
+## plot dta for the `after` layout returned by circleRepelLayout
 dat.after <- circlePlotData(res$layout)
 
-doPlot <- function(dat, title)
-  ggplot(dat) + 
-  geom_polygon(aes(x, y, group=id), colour="brown", fill="burlywood", alpha=0.3) +
-  coord_equal(xlim=limits, ylim=limits) +
-  theme_bw() +
-  theme(axis.text=element_blank(),
-        axis.ticks=element_blank(),
-        axis.title=element_blank()) +
-  labs(title=title)
+dat <- rbind(
+  cbind(dat.before, label = "before"),
+  cbind(dat.after, label = "after")
+)
 
-grid.arrange(
-  doPlot(dat.before, "before"),
-  doPlot(dat.after, "after"),
-  nrow=1)
+ggplot(data = dat, aes(x, y, group = id)) +
+  geom_polygon(colour="brown", fill="burlywood", alpha=0.3) +
+  coord_equal(xlim=limits, ylim=limits) +
+  facet_wrap(~ label)
+
 ```
 
 ## Moving and fixed circles
 
-The `circleLayout` function accepts an optional `weights` argument to give extra control over the movement of circles at each iteration of the layout algorithm. The argument takes a numeric vector with values in the range 0-1 inclusive (any values outside this range will be clamped to 0 or 1). A weight of 0 prevents a circle from moving at all while a weight of 1 allows full movement.
+The `circleRepelLayout` function accepts an optional `weights` argument to give extra control over the movement of circles at each iteration of the layout algorithm. The argument takes a numeric vector with values in the range 0-1 inclusive (any values outside this range will be clamped to 0 or 1). A weight of 0 prevents a circle from moving at all while a weight of 1 allows full movement.
 
-As an example, we will make the largest circle in the `xyr` data.frame static, and colour it differently in the before and after plots:
+To illustrate this, let's anchor the largest circle in the `xyr` data.frame:
 
 ```{r, fig.width=7, fig.height=4}
 largest.id <- which(xyr$r == max(xyr$r))
@@ -83,35 +83,26 @@ largest.id <- which(xyr$r == max(xyr$r))
 # add a column to the previously generated plot data for the 'before' circles
 dat.before$state <- ifelse(dat.before$id == largest.id, "static", "free")
 
-# tweak the plot function to colour circles based on the state column
-doPlot <- function(dat, title)
-  ggplot(dat) + 
-  geom_polygon(aes(x, y, group=id, fill=state), colour="brown1") +
-  scale_fill_manual(values=c("NA", "brown4")) +
-  coord_equal(xlim=limits, ylim=limits) +
-  theme_bw() +
-  theme(axis.text=element_blank(),
-        axis.ticks=element_blank(),
-        axis.title=element_blank(),
-        legend.position="none") +
-  labs(title=title)
-
-g.before <- doPlot(dat.before, "before")
-
 # now re-run the layout algorithm with a weights vector to fix the position
 # of the largest circle
 wts <- rep(1.0, nrow(xyr))
 wts[ largest.id ] <- 0.0
 
-res <- circleLayout(xyr, limits, limits, maxiter = 1000, weights=wts)
+res <- circleRepelLayout(xyr, limits, limits, maxiter = 1000, weights=wts)
 
-# finally generate a new plot for the 'after' circles
 dat.after <- circlePlotData(res$layout)
 dat.after$state <- ifelse(dat.after$id == largest.id, "static", "free")
 
-g.after <- doPlot(dat.after, "after")
+dat <- rbind(
+  cbind(dat.before, label = "before"),
+  cbind(dat.after, label = "after")
+)
 
-grid.arrange(g.before, g.after, nrow=1)
+ggplot(data = dat, aes(x, y, group=id, fill=state)) + 
+  geom_polygon(colour="brown1", show.legend = FALSE) +
+  scale_fill_manual(values=c("NA", "brown4")) +
+  coord_equal(xlim=limits, ylim=limits) +
+  facet_wrap(~label)
 
 ```
 

@@ -1,7 +1,7 @@
 Package: packcircles
 Type: Package
 Title: Circle Packing
-Version: 0.2.0
+Version: 0.1.99
 Date: 2017-03-31
 Authors@R: c(
   person("Michael", "Bedward", role = c("aut", "cre"), email = "michael.bedward@gmail.com"),
@@ -9,13 +9,13 @@ Authors@R: c(
          comment = "Author of Python code for graph-based circle packing ported to C++ for this package"),
   person("Peter", "Menzel", role = "aut", email = "pmenzel@gmail.com",
          comment = "Author of C code for progressive circle packing ported to C++ for this package"))
-Description: Algorithms to find non-overlapping arrangements for circles.
+Description: Simple algorithms for circle packing.
 License: MIT + file LICENSE
 URL: https://github.com/mbedward/packcircles
 Imports: Rcpp (>= 0.12.9)
 Suggests: ggplot2, 
-  gridExtra, 
-  knitr
+  knitr,
+  rmarkdown
 LinkingTo: Rcpp
 VignetteBuilder: knitr
 RoxygenNote: 6.0.1

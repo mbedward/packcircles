@@ -46,14 +46,3 @@ BEGIN_RCPP
     return rcpp_result_gen;
 END_RCPP
 }
-// testfn
-DataFrame testfn(DataFrame& df);
-RcppExport SEXP packcircles_testfn(SEXP dfSEXP) {
-BEGIN_RCPP
-    Rcpp::RObject rcpp_result_gen;
-    Rcpp::RNGScope rcpp_rngScope_gen;
-    Rcpp::traits::input_parameter< DataFrame& >::type df(dfSEXP);
-    rcpp_result_gen = Rcpp::wrap(testfn(df));
-    return rcpp_result_gen;
-END_RCPP
-}

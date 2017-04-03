@@ -13,7 +13,3 @@ do_progressive_layout <- function(radii) {
     .Call('packcircles_do_progressive_layout', PACKAGE = 'packcircles', radii)
 }
 
-testfn <- function(df) {
-    .Call('packcircles_testfn', PACKAGE = 'packcircles', df)
-}
-
