@@ -1,0 +1,168 @@
+value	colour	label
+4232	rgb(221,243,121)	Dehalogenimonas sp. WBC-2
+5097	rgb(243,198,121)	Desulfatibacillum alkenivorans AK-01
+2825	rgb(121,243,152)	Opitutus terrae PB90-1
+3471	rgb(243,198,121)	Geobacter
+7515	rgb(121,243,234)	Methanosaeta harundinacea 6Ac
+2476	rgb(196,243,121)	Rubinisphaera brasiliensis DSM 5305
+2802	rgb(121,243,127)	Truepera radiovictrix DSM 17093
+2482	rgb(243,121,191)	Thermovirga lienii DSM 17291
+3774	rgb(188,121,243)	Thermofilum pendens Hrk 5
+2632	rgb(121,243,234)	Methanoregula boonei 6A8
+79467	rgb(243,121,232)	Dictyoglomus thermophilum H-6-12
+2799	rgb(121,243,234)	Aciduliprofundum boonei T469
+2362	rgb(121,243,234)	Methanothermobacter marburgensis str. Marburg
+3273	rgb(243,198,121)	Desulfobacterium autotrophicum HRM2
+3186	rgb(221,243,121)	Roseiflexus sp. RS-1
+3300	rgb(121,243,234)	Methanocella arvoryzae MRE50
+9114	rgb(243,157,121)	Melioribacter roseus P3M-2
+35782	rgb(121,243,193)	Pseudothermotoga hypogea DSM 11164 = NBRC 106472
+3686	rgb(121,243,234)	Methanothermus fervidus DSM 2088
+3985	rgb(243,121,216)	Caldicellulosiruptor kristjanssonii I77R1B
+3632	rgb(221,243,121)	Sphaerobacter thermophilus DSM 20745
+3343	rgb(243,198,121)	Desulfarculus baarsii DSM 2075
+2931	rgb(121,227,243)	Thaumarchaeota archaeon SAT1
+4282	rgb(196,243,121)	Pirellula staleyi DSM 6068
+3118	rgb(121,186,243)	Deferribacter desulfuricans SSM1
+2956	rgb(243,121,216)	Ruminiclostridium thermocellum
+5405	rgb(243,121,216)	Ammonifex degensii KC4
+2537	rgb(121,243,218)	Candidatus Cloacimonas acidaminovorans str. Evry
+2360	rgb(243,198,121)	Desulfurivibrio alkaliphilus AHT 2
+10045	rgb(147,121,243)	Caldisericum exile AZM16c01
+150634	rgb(228,121,243)	Thermodesulfovibrio yellowstonii DSM 11347
+5488	rgb(121,243,127)	Thermus oshimai JL-2
+13033	rgb(121,243,193)	Fervidobacterium
+2356	rgb(243,121,216)	Syntrophomonas wolfei subsp. wolfei str. Goettingen G311
+8453	rgb(121,243,193)	Pseudothermotoga thermarum DSM 5069
+2671	rgb(243,121,216)	Caldicellulosiruptor lactoaceticus 6A
+52862	rgb(121,243,193)	Fervidobacterium pennivorans DSM 9078
+2481	rgb(243,157,121)	Chloroherpeton thalassium ATCC 35110
+2874	rgb(121,243,234)	Methanothermobacter
+3242	rgb(243,121,216)	Caldicellulosiruptor owensensis OL
+4175	rgb(121,243,234)	Geoglobus acetivorans
+4546	rgb(243,121,150)	Sulfurihydrogenibium sp. YO3AOP1
+2475	rgb(243,121,216)	Symbiobacterium thermophilum IAM 14863
+2503	rgb(188,121,243)	Thermogladius cellulolyticus 1633
+39174	rgb(121,243,234)	Methanolinea tarda NOBI-1
+7538	rgb(221,243,121)	Thermomicrobium roseum DSM 5159
+94082	rgb(121,243,193)	Fervidobacterium nodosum Rt17-B1
+2620	rgb(188,121,243)	Ignicoccus hospitalis KIN4/I
+2481	rgb(221,243,121)	Chloroflexus aggregans DSM 9485
+3632	rgb(243,121,191)	Anaerobaculum mobile DSM 13181
+4513	rgb(243,121,216)	Caldicellulosiruptor hydrothermalis 108
+8932	rgb(243,198,121)	Desulfomonile tiedjei DSM 6799
+3347	rgb(243,121,216)	Thermoanaerobacter
+5179	rgb(121,243,127)	Thermus aquaticus Y51MC23
+3544	rgb(243,198,121)	Desulfococcus oleovorans Hxd3
+3093	rgb(243,121,216)	Tepidanaerobacter acetatoxydans Re1
+2607	rgb(243,198,121)	Desulfurella acetivorans A63
+11869	rgb(243,121,125)	Thermodesulfobacterium geofontis OPF15
+2550	rgb(121,161,243)	Fimbriimonas ginsengisoli Gsoil 348
+2956	rgb(163,121,243)	Candidatus Koribacter versatilis Ellin345
+2600	rgb(121,243,193)	Mesotoga prima MesG1.Ag.4.2
+2614	rgb(121,243,234)	Aciduliprofundum sp. MAR08-339
+32105	rgb(121,243,193)	Thermotoga caldifontis AZM44c09
+3383	rgb(163,121,243)	Chloracidobacterium thermophilum B
+2921	rgb(121,243,234)	Methanoregula formicica SMSP
+2379	rgb(122,121,243)	Spirochaeta thermophila
+7636	rgb(121,243,234)	Ferroglobus placidus DSM 10642
+2547	rgb(121,243,234)	Euryarchaeota
+71618	rgb(121,243,193)	Thermotoga profunda AZM34c06
+4490	rgb(243,121,216)	Desulfotomaculum gibsoniae DSM 7213
+30598	rgb(243,121,232)	Dictyoglomus
+4025	rgb(156,243,121)	Thermobaculum terrenum ATCC BAA-798
+4641	rgb(188,121,243)	Thermofilum
+2703	rgb(221,243,121)	Roseiflexus castenholzii DSM 13941
+3463	rgb(243,121,216)	Candidatus Desulforudis audaxviator MP104C
+2806	rgb(243,121,216)	Coprothermobacter proteolyticus DSM 5265
+7393	rgb(243,121,166)	Candidatus Korarchaeum cryptofilum OPF8
+4342	rgb(121,243,234)	Geoglobus ahangari
+2975	rgb(188,121,243)	Pyrolobus fumarii 1A
+4271	rgb(121,243,234)	Thermococcus
+3375	rgb(121,243,193)	Marinitoga piezophila KA3
+2923	rgb(121,243,193)	Petrotoga mobilis SJ95
+2875	rgb(243,121,216)	Caldicellulosiruptor obsidiansis OB47
+4207	rgb(243,157,121)	Rhodothermus marinus
+8547	rgb(121,243,193)	Thermotoga
+4559	rgb(243,121,216)	Clostridium
+2540	rgb(121,243,193)	Kosmotoga olearia TBF 19.5.1
+6357	rgb(163,121,243)	Candidatus Solibacter usitatus Ellin6076
+3205	rgb(243,121,150)	Persephonella marina EX-H1
+3447	rgb(122,121,243)	Treponema caldarium DSM 7334
+3869	rgb(121,243,234)	Methanocella conradii HZ254
+2803	rgb(243,121,216)	[Clostridium] stercorarium subsp. stercorarium DSM 8532
+2404	rgb(228,121,243)	Nitrospira moscoviensis
+3740	rgb(243,183,121)	Terrabacteria group
+18973	rgb(121,243,234)	Archaeoglobus fulgidus
+3564	rgb(121,243,234)	Candidatus Methanomassiliicoccus intestinalis Issoire-Mx1
+21200	rgb(121,243,127)	Thermus scotoductus SA-01
+8440	rgb(243,157,121)	Ignavibacterium album JCM 16511
+5534	rgb(243,121,125)	Thermodesulfatator indicus DSM 15286
+5279	rgb(243,121,216)	Thermacetogenium phaeum DSM 12270
+6923	rgb(243,121,150)	Hydrogenobacter thermophilus TK-6
+3462	rgb(243,121,216)	Thermincola potens JR
+4912	rgb(121,243,193)	Thermosipho africanus TCF52B
+2578	rgb(188,121,243)	Thermosphaera aggregans DSM 11486
+2827	rgb(243,121,216)	[Clostridium] clariflavum DSM 19732
+2812	rgb(122,121,243)	Spirochaeta smaragdinae DSM 11293
+5556	rgb(243,121,150)	Thermocrinis ruber
+6730	rgb(243,198,121)	Syntrophobacter fumaroxidans MPOB
+6831	rgb(121,243,234)	Archaeoglobus profundus DSM 5631
+2507	rgb(121,243,234)	Methanosphaerula palustris E1-9c
+3928	rgb(243,198,121)	Desulfobacula toluolica Tol2
+6816	rgb(121,243,234)	Archaeoglobus sulfaticallidus PM70-1
+2844	rgb(188,121,243)	Caldivirga maquilingensis IC-167
+2646	rgb(243,198,121)	Hippea maritima DSM 10411
+2690	rgb(243,121,216)	Clostridiales
+4501	rgb(243,198,121)	Proteobacteria
+2441	rgb(121,243,234)	Archaeoglobaceae
+2866	rgb(243,121,216)	Caldanaerobacter subterraneus subsp. tengcongensis MB4
+15015	rgb(221,243,121)	Anaerolinea thermophila UNI-1
+7954	rgb(243,198,121)	Syntrophus aciditrophicus SB
+46488	rgb(243,121,216)	Caldicellulosiruptor
+2451	rgb(196,243,121)	Isosphaera pallida ATCC 43644
+4103	rgb(243,121,216)	Carboxydothermus hydrogenoformans Z-2901
+5935	rgb(243,121,216)	Caldicellulosiruptor saccharolyticus DSM 8903
+3178	rgb(243,121,216)	Halothermothrix orenii H 168
+31839	rgb(243,223,121)	Bacteria
+3236	rgb(121,243,127)	Thermus thermophilus
+2422	rgb(243,198,121)	Desulfobulbus propionicus DSM 2032
+7885	rgb(121,243,127)	Thermus sp. CCB_US3_UF1
+3858	rgb(221,243,121)	Dehalococcoides
+3061	rgb(121,243,234)	Thermococcaceae
+9407	rgb(121,243,234)	Methanosaeta concilii GP6
+3208	rgb(121,243,193)	Thermosipho melanesiensis BI429
+3994	rgb(243,121,216)	Thermosediminibacter oceani DSM 16646
+2770	rgb(243,121,216)	Thermodesulfobium narugense DSM 14796
+2599	rgb(243,121,216)	Caldicellulosiruptor kronotskyensis 2002
+13510	rgb(121,243,127)	Thermus
+2346	rgb(243,198,121)	Pelobacter carbinolicus DSM 2380
+11868	rgb(243,121,125)	Thermodesulfobacterium commune DSM 2178
+7399	rgb(121,243,234)	Archaeoglobus veneficus SNP6
+3912	rgb(221,243,121)	Chloroflexus
+3053	rgb(243,121,216)	Paenibacillus
+5791	rgb(243,121,150)	Sulfurihydrogenibium azorense Az-Fu1
+6845	rgb(131,243,121)	cellular organisms
+5975	rgb(121,186,243)	Calditerrivibrio nitroreducens DSM 19672
+2672	rgb(243,121,216)	Thermaerobacter marianensis DSM 12885
+2452	rgb(188,121,243)	Pyrodictium delaneyi
+3306	rgb(243,121,150)	Aquifex aeolicus VF5
+11074	rgb(121,243,193)	Pseudothermotoga
+10064	rgb(221,243,121)	Caldilinea aerophila DSM 14535 = NBRC 104270
+4707	rgb(243,121,216)	Moorella thermoacetica
+44747	rgb(243,121,232)	Dictyoglomus turgidum DSM 6724
+3254	rgb(221,243,121)	Dehalogenimonas lykanthroporepellens BL-DC-9
+4071	rgb(196,243,121)	Singulisphaera acidiphila DSM 18658
+4768	rgb(243,121,216)	Syntrophothermus lipocalidus DSM 12680
+5457	rgb(243,121,216)	Mahella australiensis 50-1 BON
+3748	rgb(188,121,243)	Thermofilum sp. 1807-2
+6287	rgb(243,198,121)	Desulfobacca acetoxidans DSM 11109
+2594	rgb(243,121,216)	Caldicellulosiruptor bescii DSM 6725
+4535	rgb(121,243,234)	Methanosarcina
+2341	rgb(121,243,234)	Methanotorris igneus Kol 5
+2505	rgb(243,121,216)	Desulfotomaculum acetoxidans DSM 771
+2759	rgb(121,243,152)	Verrucomicrobia bacterium L21-Fru-AB
+4883	rgb(243,121,150)	Thermocrinis albus DSM 14484
+4408	rgb(121,243,234)	Methanospirillum hungatei JF-1
+2444	rgb(121,243,234)	Methanoculleus bourgensis MS2
+13932	rgb(121,243,193)	Thermotogaceae

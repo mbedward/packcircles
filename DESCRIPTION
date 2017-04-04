@@ -2,7 +2,7 @@ Package: packcircles
 Type: Package
 Title: Circle Packing
 Version: 0.1.99
-Date: 2017-03-31
+Date: 2017-04-04
 Authors@R: c(
   person("Michael", "Bedward", role = c("aut", "cre"), email = "michael.bedward@gmail.com"),
   person("David", "Eppstein", role = "aut", email = "david.eppstein@gmail.com", 
@@ -12,8 +12,10 @@ Authors@R: c(
 Description: Simple algorithms for circle packing.
 License: MIT + file LICENSE
 URL: https://github.com/mbedward/packcircles
-Imports: Rcpp (>= 0.12.9)
-Suggests: ggplot2, 
+Depends: R (>= 3.2)
+Imports: Rcpp (>= 0.12.10)
+Suggests: ggiraph (>= 0.3.3),
+  ggplot2, 
   knitr,
   rmarkdown
 LinkingTo: Rcpp

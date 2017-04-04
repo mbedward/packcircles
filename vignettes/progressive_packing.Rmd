@@ -1,0 +1,218 @@
+--- 
+title: "Progressive circle packing" 
+author: "Michael Bedward" 
+date: "`r Sys.Date()`" 
+output: rmarkdown::html_vignette 
+vignette: > 
+  %\VignetteIndexEntry{Progressive circle packing}
+  %\VignetteEngine{knitr::rmarkdown} 
+  \usepackage[utf8]{inputenc}
+---
+
+```{r setup, include=FALSE}
+
+set.seed(42)
+
+library(packcircles) 
+library(ggplot2)
+
+t <- theme_bw() + 
+  theme(panel.grid = element_blank(), 
+        axis.text=element_blank(),
+        axis.ticks=element_blank(), 
+        axis.title=element_blank())
+
+theme_set(t)
+
+```
+
+The function `circleProgressiveLayout` arranges a set of circles
+deterministically. The first two circles are placed to the left and right of the
+origin respectively. Subsequent circles are placed so that each:
+
+  * is externally tangent to two previously placed circles; 
+  * does not overlap another circle; 
+  * and is as close as possible to the origin.
+
+The algorithm was described in the paper: *Visualization of large hierarchical
+data by circle packing* by Weixin Wang, Hui Wang, Guozhong Dai, and Hongan Wang.
+Published in *Proceedings of the SIGCHI Conference on Human Factors in Computing
+Systems*, 2006, pp. 517-520. [ACM](https://dl.acm.org/citation.cfm?id=1124851).
+
+The implementation in this package is based on a [version written in C by Peter 
+Menzel](https://github.com/pmenzel/packCircles).
+
+The algorithm is very efficient and this, combined with the implementation in Rcpp, means arrangements for large numbers of circles can be found quickly.
+
+
+## First example
+
+We begin by arranging 10 circles of various sizes. First we pass a
+vector of circle areas to the `circleProgressiveLayout` function. It returns a 
+data frame of centre coordinates and radii.
+
+```{r}
+
+areas <- c(20, 10, 40, rep(5, 7))
+
+# Generate the layout 
+packing <- circleProgressiveLayout(areas) 
+
+head( round(packing, 2) )
+
+```
+
+Next we derive a data frame of circle vertices for plotting using the 
+`circlePlotData` function, and then use ggplot to display the layout, labelling 
+the circles to show their order of placement:
+
+```{r fig.width=4, fig.height=4} 
+
+dat.gg <- circlePlotData(packing, npoints=50)
+
+ggplot(data = dat.gg) + geom_polygon(aes(x, y, group = id), colour = "black", 
+fill = "grey90", alpha = 0.7, show.legend = FALSE) +
+
+geom_text(data = packing, aes(x, y), label = 1:nrow(packing)) +
+
+coord_equal()
+
+```
+
+By default, `circleProgressiveLayout` takes the input sizes to be circle areas. 
+If instead you have input radii, add `sizetype = "radius"` to the arguments when calling the 
+function.
+
+
+## Layouts are order dependent
+
+Re-ordering the input sizes will generally produce a different layout unless the sizes are uniform. Here we repeatedly shuffle the area values used above and generate a new layout each time.
+
+```{r fig.width=7, fig.height=5}
+
+ncircles <- length(areas) 
+nreps <- 6
+
+packings <- lapply(
+  1:nreps, 
+  function(i) { 
+    x <- sample(areas, ncircles) 
+    circleProgressiveLayout(x) 
+  })
+
+packings <- do.call(rbind, packings)
+
+npts <- 50 
+dat.gg <- circlePlotData(packings, npoints = npts) 
+
+dat.gg$rep <- rep(1:nreps, each = ncircles * (npts+1))
+
+
+ggplot(data = dat.gg, aes(x, y)) + 
+  geom_polygon(aes(group = id), 
+               colour = "black", fill = "grey90") +
+
+  coord_equal() +
+
+  facet_wrap(~ rep, nrow = 2)
+
+```
+
+
+We can use this ordering effect to create some circle art...
+
+
+```{r fig.width=7, fig.height=4}
+
+areas <- 1:1000
+
+# area: small to big
+packing1 <- circleProgressiveLayout(areas)
+dat1 <- circlePlotData(packing1)
+
+# area: big to small
+packing2 <- circleProgressiveLayout( rev(areas) ) 
+dat2 <- circlePlotData(packing2)
+
+dat <- rbind( 
+  cbind(dat1, set = 1), 
+  cbind(dat2, set = 2) )
+
+ggplot(data = dat, aes(x, y)) + 
+  geom_polygon(aes(group = id, fill = -id), 
+               colour = "black", show.legend = FALSE) +
+  
+  scale_fill_distiller(palette = "RdGy") +
+  
+  coord_equal() +
+  
+  facet_wrap(~set, 
+             labeller = as_labeller(
+               c('1' = "small circles first", 
+                 '2' = "big circles first"))
+             )
+
+```
+
+
+## More detailed layout display
+
+The package includes an example data set of the abundance of different types of bacteria measured in a study of biofilms. Columns are value (abundance), display colour and label (bacterial taxon).
+
+```{r}
+
+data("bacteria")
+head(bacteria)
+
+```
+
+The following example shows how to display the abundance values as circles filled with the specified colours. It relies on the fact that the `id` column in the output of `circlePlotData` maps to the row number of the input data.
+
+Note: the y-axis is reversed so that the layour is rendered similarly to the example [here](https://github.com/pmenzel/packCircles).
+
+```{r fig.width=5, fig.height=5, fig.align='center'}
+
+packing <- circleProgressiveLayout(bacteria)
+
+dat.gg <- circlePlotData(packing)
+
+ggplot(data = dat.gg) +
+  geom_polygon(aes(x, y, group = id, fill = factor(id)), 
+               colour = "black",
+               show.legend = FALSE) +
+  
+  scale_fill_manual(values = bacteria$colour) +
+  
+  scale_y_reverse() +
+  
+  coord_equal()
+
+```
+
+
+As a further flourish, we can make the plot interactive so that the name of the bacterial taxon is displayed when the mouse cursor hovers a circle. Here we use the `ggiraph` package to accomplish this.
+
+```{r fig.width=5, fig.height=5}
+
+library(ggiraph)
+
+gg <- ggplot(data = dat.gg) +
+  
+  geom_polygon_interactive(
+    aes(x, y, group = id, fill = factor(id),
+        tooltip = bacteria$label[id], data_id = id), 
+    colour = "black",
+    show.legend = FALSE) +
+  
+  scale_fill_manual(values = bacteria$colour) +
+  
+  scale_y_reverse() +
+  
+  labs(title = "Hover over circle to display taxon") +
+
+  coord_equal()
+
+ggiraph(ggobj = gg, width_svg = 5, height_svg = 5)
+
+```
+
