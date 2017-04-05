@@ -1,6 +1,6 @@
 # NEWS packcircles
 
-Version 0.2.0 (coming soon)
+Version 0.2.0 2017-04-05
 
 * Added `circleProgressiveLayout` which deterministically places each circle in 
   turn such that it is externally tangent to two previously placed circles while 
@@ -25,3 +25,5 @@ Version 0.2.0 (coming soon)
 * Re-wrote the introductory vignette and added a new vignette for `circleProgressiveLayout`.
 
 * Edited function docs and examples.
+
+* Added file for native routine registration as now required by CRAN.
