@@ -17,8 +17,7 @@ In the figure below, the graph on the left represents the desired pattern of cir
 
 ![Tangency graph and resulting packing](graph_example.png)
 
-The function `circleGraphLayout` implements a basic version of the algorithm. The following example produces
-a circle layout similar to the above figure:
+The function `circleGraphLayout` implements a basic version of the algorithm. The following example produces a layout similar to the above figure:
 
 ```{r, eval=FALSE}
 
@@ -46,13 +45,17 @@ external <- data.frame(id = c(1, 2, 3, 4, 6, 10, 11), radius=10.0)
 layout <- circleGraphLayout(internal, external)
 
 ## Get data for circle vertices.
-plotdat <- circlePlotData(layout, xyr.cols = 2:4, id.col = 1)
+plotdat <- circleLayoutVertices(layout, xysizecols = 2:4, idcol = 1)
 
 ## Draw circles annotated with their IDs.
 ggplot() +
-  geom_polygon(data=plotdat, aes(x, y, group=id), fill=NA, colour="black") +
+  geom_polygon(data=plotdat, aes(x, y, group=id), 
+               fill=NA, colour="black") +
+  
   geom_text(data=layout, aes(x, y, label=id)) +
+  
   coord_equal() +
+  
   theme_bw()
 
 ```

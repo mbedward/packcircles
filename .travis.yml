@@ -1,7 +1,5 @@
 language: r
+sudo: false
+cache: packages
 warnings_are_errors: true
-sudo: required
-
-env:
- global:
-   - CRAN: http://cran.rstudio.com
+cran: http://cran.rstudio.com

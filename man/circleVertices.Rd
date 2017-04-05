@@ -2,25 +2,28 @@
 % Please edit documentation in R/circleVertices.R
 \name{circleVertices}
 \alias{circleVertices}
-\title{Generate vertex coordinates for a circle.}
+\title{Generate vertex coordinates for a circle}
 \usage{
-circleVertices(xc, yc, r, npoints = 25)
+circleVertices(xc, yc, radius, npoints = 25)
 }
 \arguments{
-\item{xc}{centre X}
+\item{xc}{Circle centre X ordinate.}
 
-\item{yc}{centre Y}
+\item{yc}{Circle centre Y ordinate.}
 
-\item{r}{radius}
+\item{radius}{Circle radius.}
 
-\item{npoints}{number of vertices}
+\item{npoints}{Number of distinct vertices required.}
 }
 \value{
-A 2-column matrix of X and Y values.
+A 2-column matrix of X and Y values. The final row is a copy
+  of the first row to create a closed polygon, so the matrix has
+  \code{npoints + 1} rows.
 }
 \description{
-Generates vertex coordinates for a circle with given centre and radius.
+Generates vertex coordinates for a circle given its centre coordinates
+and radius.
 }
 \seealso{
-\code{\link{circlePlotData}}
+\code{\link{circleLayoutVertices}}
 }

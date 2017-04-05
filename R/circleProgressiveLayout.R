@@ -19,25 +19,27 @@
 #' @param sizecol The index or name of the column in \code{x} for circle sizes.
 #'   Ignored if \code{x} is a vector.
 #'   
-#' @param sizetype The type of size values: either \code{"area"} or \code{"radius"}.
-#'   May be abbreviated.
+#' @param sizetype The type of size values: either \code{"area"} (default) 
+#'   or \code{"radius"}. May be abbreviated.
 #' 
 #' @return A data frame with columns: x, y, radius. If any of the input size values
 #'   were non-positive or missing, the corresponding rows of the output data frame
 #'   will be filled with \code{NA}s.
 #'   
 #' @examples
-#' \dontrun{
-#' areas <- 1000:100
+#' areas <- sample(c(4, 16, 64), 100, rep = TRUE, prob = c(60, 30, 10))
 #' packing <- circleProgressiveLayout(areas)
+#'
+#' \dontrun{
 #' 
 #' # Graph the result with ggplot
-#' packing.gg <- circlePlotData(packing)
+#' dat.gg <- circleLayoutVertices(packing)
 #' 
-#' ggplot(data = packing.gg, aes(x, y)) +
-#'   geom_polygon(aes(group = id), colour = "black", fill = "goldenrod") +
+#' ggplot(data = dat.gg, aes(x, y, group = id)) +
+#'   geom_polygon(colour = "black", fill = "grey90") +
 #'   coord_equal() +
 #'   theme_void()
+#' 
 #' }
 #' 
 #' @export

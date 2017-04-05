@@ -2,6 +2,7 @@
 
 export(circleGraphLayout)
 export(circleLayout)
+export(circleLayoutVertices)
 export(circlePlotData)
 export(circleProgressiveLayout)
 export(circleRepelLayout)

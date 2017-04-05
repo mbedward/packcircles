@@ -63,12 +63,12 @@ head( round(packing, 2) )
 ```
 
 Next we derive a data frame of circle vertices for plotting using the 
-`circlePlotData` function, and then use ggplot to display the layout, labelling 
+`circleLayoutVertices` function, and then use ggplot to display the layout, labelling 
 the circles to show their order of placement:
 
 ```{r fig.width=4, fig.height=4} 
 
-dat.gg <- circlePlotData(packing, npoints=50)
+dat.gg <- circleLayoutVertices(packing, npoints=50)
 
 ggplot(data = dat.gg) + geom_polygon(aes(x, y, group = id), colour = "black", 
 fill = "grey90", alpha = 0.7, show.legend = FALSE) +
@@ -103,7 +103,7 @@ packings <- lapply(
 packings <- do.call(rbind, packings)
 
 npts <- 50 
-dat.gg <- circlePlotData(packings, npoints = npts) 
+dat.gg <- circleLayoutVertices(packings, npoints = npts) 
 
 dat.gg$rep <- rep(1:nreps, each = ncircles * (npts+1))
 
@@ -128,11 +128,11 @@ areas <- 1:1000
 
 # area: small to big
 packing1 <- circleProgressiveLayout(areas)
-dat1 <- circlePlotData(packing1)
+dat1 <- circleLayoutVertices(packing1)
 
 # area: big to small
 packing2 <- circleProgressiveLayout( rev(areas) ) 
-dat2 <- circlePlotData(packing2)
+dat2 <- circleLayoutVertices(packing2)
 
 dat <- rbind( 
   cbind(dat1, set = 1), 
@@ -166,7 +166,7 @@ head(bacteria)
 
 ```
 
-The following example shows how to display the abundance values as circles filled with the specified colours. It relies on the fact that the `id` column in the output of `circlePlotData` maps to the row number of the input data.
+The following example shows how to display the abundance values as circles filled with the specified colours. It relies on the fact that the `id` column in the output of `circleLayoutVertices` maps to the row number of the input data.
 
 Note: the y-axis is reversed so that the layour is rendered similarly to the example [here](https://github.com/pmenzel/packCircles).
 
@@ -174,7 +174,7 @@ Note: the y-axis is reversed so that the layour is rendered similarly to the exa
 
 packing <- circleProgressiveLayout(bacteria)
 
-dat.gg <- circlePlotData(packing)
+dat.gg <- circleLayoutVertices(packing)
 
 ggplot(data = dat.gg) +
   geom_polygon(aes(x, y, group = id, fill = factor(id)), 
@@ -208,7 +208,7 @@ gg <- ggplot(data = dat.gg) +
   
   scale_y_reverse() +
   
-  labs(title = "Hover over circle to display taxon") +
+  labs(title = "Hover over circle to display taxon name") +
 
   coord_equal()
 

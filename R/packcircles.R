@@ -6,7 +6,8 @@
 #'  \item{circleRepelLayout}{Arranges circles within a bounding rectangle
 #'    by pairwise repulsion.}
 #'  \item{circleProgressiveLayout}{Arranges circles in an unbounded area
-#'    by progressive placement.}
+#'    by progressive placement. This is a very efficient algorithm that can
+#'    handle large numbers of circles.}
 #'  \item{circleGraphLayout}{Finds an arrangement of circles conforming to
 #'    a graph specification.}
 #' }

@@ -13,8 +13,8 @@ with one column for circle sizes.}
 \item{sizecol}{The index or name of the column in \code{x} for circle sizes.
 Ignored if \code{x} is a vector.}
 
-\item{sizetype}{The type of size values: either \code{"area"} or \code{"radius"}.
-May be abbreviated.}
+\item{sizetype}{The type of size values: either \code{"area"} (default) 
+or \code{"radius"}. May be abbreviated.}
 }
 \value{
 A data frame with columns: x, y, radius. If any of the input size values
@@ -37,17 +37,19 @@ The implementation here was adapted from a version written in C by Peter Menzel:
 \url{https://github.com/pmenzel/packCircles}.
 }
 \examples{
-\dontrun{
-areas <- 1000:100
+areas <- sample(c(4, 16, 64), 100, rep = TRUE, prob = c(60, 30, 10))
 packing <- circleProgressiveLayout(areas)
 
-# Graph the result with ggplot
-packing.gg <- circlePlotData(packing)
+\dontrun{
 
-ggplot(data = packing.gg, aes(x, y)) +
-  geom_polygon(aes(group = id), colour = "black", fill = "goldenrod") +
+# Graph the result with ggplot
+dat.gg <- circleLayoutVertices(packing)
+
+ggplot(data = dat.gg, aes(x, y, group = id)) +
+  geom_polygon(colour = "black", fill = "grey90") +
   coord_equal() +
   theme_void()
+
 }
 
 }
