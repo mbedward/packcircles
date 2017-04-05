@@ -184,6 +184,8 @@ circleRepelLayout <- function(x, xlim, ylim,
 }
 
 
+#' @importFrom stats rnorm
+#' 
 .initial_ordinates <- function(n, limits) {
   if (anyNA(limits) || length(limits) < 2) 
     stop("Invalid limits: ", limits)
