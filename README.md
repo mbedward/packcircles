@@ -1,6 +1,8 @@
 # packcircles
 R package for circle packing.
 
+[![Travis Build Status](https://travis-ci.org/mbedward/packcircles.svg?branch=master)](https://travis-ci.org/mbedward/packcircles)
+
 This package provides functions to find non-overlapping arrangements of circles.
 
 The function `circleLayout` attempts to arrange a set of circles of specified
