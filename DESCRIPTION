@@ -1,23 +1,26 @@
 Package: packcircles
 Type: Package
-Title: Circle Packing
 Version: 0.1.99
+Title: Circle Packing
+Description: Simple algorithms for circle packing.
 Date: 2017-04-04
 Authors@R: c(
   person("Michael", "Bedward", role = c("aut", "cre"), email = "michael.bedward@gmail.com"),
   person("David", "Eppstein", role = "aut", email = "david.eppstein@gmail.com", 
          comment = "Author of Python code for graph-based circle packing ported to C++ for this package"),
   person("Peter", "Menzel", role = "aut", email = "pmenzel@gmail.com",
-         comment = "Author of C code for progressive circle packing ported to C++ for this package"))
-Description: Simple algorithms for circle packing.
-License: MIT + file LICENSE
+         comment = "Author of C code for progressive circle packing ported to C++ for this package")
+  )
 URL: https://github.com/mbedward/packcircles
+BugReports: https://github.com/mbedward/packcircles/issues
 Depends: R (>= 3.2)
 Imports: Rcpp (>= 0.12.10)
 Suggests: ggiraph (>= 0.3.3),
   ggplot2, 
   knitr,
   rmarkdown
-LinkingTo: Rcpp
 VignetteBuilder: knitr
+LinkingTo: Rcpp (>= 0.12.10)
+LazyData: true
+License: MIT + file LICENSE
 RoxygenNote: 6.0.1

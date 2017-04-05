@@ -8,4 +8,6 @@
 #'   \item{colour}{preferred colour for display}
 #'   \item{label}{taxon name}
 #' }
+#' 
 "bacteria"
+
