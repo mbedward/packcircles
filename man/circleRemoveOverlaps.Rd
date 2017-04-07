@@ -4,7 +4,8 @@
 \alias{circleRemoveOverlaps}
 \title{Filters a set of circles to remove all overlaps}
 \usage{
-circleRemoveOverlaps(x, xysizecols = 1:3, sizetype = c("area", "radius"))
+circleRemoveOverlaps(x, xysizecols = 1:3, sizetype = c("area", "radius"),
+  tolerance = 1)
 }
 \arguments{
 \item{x}{A matrix or data frame containing circle x-y centre coordinates
@@ -15,6 +16,11 @@ the centre x-y coordinates and sizes of circles. Default is \code{c(1,2,3)}.}
 
 \item{sizetype}{The type of size values: either \code{"area"} (default) or 
 \code{"radius"}. May be abbreviated.}
+
+\item{tolerance}{Controls the amount of overlap allowed. Set to 1 for 
+simple exclusion of overlaps. Values lower than 1 allow more overlap.
+Values > 1 have the effect of expanding the influence of circles so that
+more space is required between them. The input value must be > 0.}
 }
 \value{
 A data frame with centre coordinates and radii of selected circles.
