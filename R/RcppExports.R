@@ -13,3 +13,7 @@ do_progressive_layout <- function(radii) {
     .Call('packcircles_do_progressive_layout', PACKAGE = 'packcircles', radii)
 }
 
+select_non_overlapping <- function(xyr, tolerance) {
+    .Call('packcircles_select_non_overlapping', PACKAGE = 'packcircles', xyr, tolerance)
+}
+

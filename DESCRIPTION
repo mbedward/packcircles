@@ -1,6 +1,6 @@
 Package: packcircles
 Type: Package
-Version: 0.2.0
+Version: 0.2.0.9000
 Title: Circle Packing
 Description: Simple algorithms for circle packing.
 Date: 2017-04-04
