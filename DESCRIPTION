@@ -1,6 +1,6 @@
 Package: packcircles
 Type: Package
-Version: 0.2.0.9000
+Version: 0.2.0.9001
 Title: Circle Packing
 Description: Simple algorithms for circle packing.
 Date: 2017-04-04
@@ -18,7 +18,8 @@ Imports: Rcpp (>= 0.12.10)
 Suggests: ggiraph (>= 0.3.3),
   ggplot2, 
   knitr,
-  rmarkdown
+  rmarkdown,
+  lpSolve
 VignetteBuilder: knitr
 LinkingTo: Rcpp (>= 0.12.10)
 LazyData: true

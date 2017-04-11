@@ -5,7 +5,8 @@
 \title{Filters a set of circles to remove all overlaps}
 \usage{
 circleRemoveOverlaps(x, xysizecols = 1:3, sizetype = c("area", "radius"),
-  tolerance = 1)
+  tolerance = 1, method = c("maxov", "minov", "largest", "smallest",
+  "random", "lparea", "lpnum"))
 }
 \arguments{
 \item{x}{A matrix or data frame containing circle x-y centre coordinates
@@ -21,10 +22,53 @@ the centre x-y coordinates and sizes of circles. Default is \code{c(1,2,3)}.}
 simple exclusion of overlaps. Values lower than 1 allow more overlap.
 Values > 1 have the effect of expanding the influence of circles so that
 more space is required between them. The input value must be > 0.}
+
+\item{method}{Specifies whether to use linear programming (default) or one of
+the variants of the heuristic algorithm. Alternatives are:
+\code{"maxov"}, \code{"minov"}, \code{"largest"}, \code{"smallest"},
+\code{"random"}, \code{"lparea"}, \code{"lpnum"}. See Details for further
+explanation.}
 }
 \value{
 A data frame with centre coordinates and radii of selected circles.
 }
 \description{
-Filters a set of circles to remove all overlaps
+Given an initial set of circles, this function identifies a subset of
+non-overlapping circles using a simple heuristic algorithm. At each
+iteration the numnber of overlaps is checked for each candidate circle and
+any non-overlapping circles added to the selected subset. Then a single 
+overlapping circle is chosen (see Details) from among the remainder and marked
+as rejected. Iterations continue until all circles have been either 
+selected or rejected.
+}
+\details{
+The \code{method} argument specifies whether to use variations of
+the heuristic selection algorithm or linear programming (with package \code{lpSolve}):
+  \describe{
+    \item{maxov}{Choose a circle whose number of overlaps equals the current maximum.}
+    \item{minov}{Choose a circle whose number of overlaps equals the current 
+    (non-zero) minimum.}
+    \item{largest}{Choose a circle whose size equals the current maximum size of 
+    overlapping circles.}
+    \item{smallest}{Choose a circle whose size equals the current minimum size of 
+    overlapping circles.}
+    \item{random}{Choose a circle at random.}
+    \item{lp}{Use linear programming to find a solution maximising the total area
+    of circles in the subset. Package lpSolve must be installed for this option.}
+  }
+  
+When using the heuristic algorithm with a method other than \code{random}, overlapping
+circles are assessed at each step according to the ordering criterion (e.g. having the
+most number of overlaps) and then, if more than one circle meets the criterion, a
+random selection is made from among them.
+
+In tests with random configurations of uniform and non-uniform sized circles, the 
+default \code{maxov} strategy seems to produce the densest subset of non-overlapping
+circles while the \code{minov} strategy often produces very sparse subsets. However,
+results will be highly data dependent.
+}
+\note{
+\emph{This function is experimental} and will almost certainly change before
+the next package release. In particular, it will probably return something
+other than a data frame.
 }

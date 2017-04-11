@@ -47,14 +47,15 @@ BEGIN_RCPP
 END_RCPP
 }
 // select_non_overlapping
-LogicalVector select_non_overlapping(NumericMatrix xyr, double tolerance);
-RcppExport SEXP packcircles_select_non_overlapping(SEXP xyrSEXP, SEXP toleranceSEXP) {
+LogicalVector select_non_overlapping(NumericMatrix xyr, const double tolerance, const StringVector& ordering);
+RcppExport SEXP packcircles_select_non_overlapping(SEXP xyrSEXP, SEXP toleranceSEXP, SEXP orderingSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
     Rcpp::traits::input_parameter< NumericMatrix >::type xyr(xyrSEXP);
-    Rcpp::traits::input_parameter< double >::type tolerance(toleranceSEXP);
-    rcpp_result_gen = Rcpp::wrap(select_non_overlapping(xyr, tolerance));
+    Rcpp::traits::input_parameter< const double >::type tolerance(toleranceSEXP);
+    Rcpp::traits::input_parameter< const StringVector& >::type ordering(orderingSEXP);
+    rcpp_result_gen = Rcpp::wrap(select_non_overlapping(xyr, tolerance, ordering));
     return rcpp_result_gen;
 END_RCPP
 }

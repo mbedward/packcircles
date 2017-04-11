@@ -1,6 +1,7 @@
 #include <Rcpp.h>
 using namespace Rcpp;
 
+#include <map>
 #include <vector>
 
 using namespace std;
@@ -42,6 +43,20 @@ RandomInts RANDOM;
 const int Selected = 1;
 const int Candidate = 0;
 const int Rejected = -1;
+
+
+// Options for order of removal
+const StringVector OrderingLabels = StringVector::create(
+  "maxov", "minov", "largest", "smallest", "random"
+);
+
+enum OrderingCodes {
+  ORDER_MAXOV,
+  ORDER_MINOV,
+  ORDER_LARGEST,
+  ORDER_SMALLEST,
+  ORDER_RANDOM
+};
 
 
 class Circle {
@@ -91,7 +106,7 @@ public:
   
   
   // Finds a subset of non-overlapping circles
-  LogicalVector select_circles() {
+  LogicalVector select_circles(const int ordering) {
     const int N = _circles.size();
     int ndone = 0;
     
@@ -111,9 +126,33 @@ public:
       }
       
       if (ndone < N) {
-        // Find circle(s) with current maximum number of overlaps
-        // and randomly choose one for removal
-        IntegerVector ids = which(nbrCount == max(nbrCount));
+        // Find circle(s) with current min or max number of overlaps,
+        // depending on the argument bigFirst, and randomly choose one
+        // for removal
+        LogicalVector b(nbrCount.length());
+        switch (ordering) {
+        case ORDER_MAXOV:
+          b = nbrCount == max(nbrCount); break;
+          
+        case ORDER_MINOV:
+        {
+          IntegerVector x = nbrCount[nbrCount > 0];
+          int val = min(x);
+          b = nbrCount == val;
+        }
+        break;
+
+        case ORDER_LARGEST:
+          b = flag_largest(nbrCount > 0); break;
+          
+        case ORDER_SMALLEST:
+          b = flag_smallest(nbrCount > 0); break;
+          
+        case ORDER_RANDOM:
+          b = nbrCount > 0; break;
+        }
+          
+        IntegerVector ids = which(b);
         int removeId = sample_one_of(ids);
         
         _circles.at(removeId).state = Rejected;
@@ -146,6 +185,34 @@ private:
     }
     
     return  n;
+  }
+  
+  
+  // helper function - returns a logical vector indicating which
+  // circles are included and largest amongst included
+  LogicalVector flag_largest(const LogicalVector& include) {
+    NumericVector radii(_circles.size(), 0.0);
+    for (unsigned int i = 0; i < _circles.size(); i++) {
+      if (include[i]) {
+        radii[i] = _circles.at(i).radius;
+      }
+    }
+    
+    return radii == max(radii);  
+  }
+  
+  
+  // helper function - returns a logical vector indicating which
+  // circles are included and largest amongst included
+  LogicalVector flag_smallest(const LogicalVector& include) {
+    NumericVector radii(_circles.size(), DOUBLE_XMAX);
+    for (unsigned int i = 0; i < _circles.size(); i++) {
+      if (include[i]) {
+        radii[i] = _circles.at(i).radius;
+      }
+    }
+    
+    return radii == min(radii);
   }
   
   
@@ -185,8 +252,29 @@ private:
 // Returns a logical vector with selected = true.
 //
 // [[Rcpp::export]]
-LogicalVector select_non_overlapping(NumericMatrix xyr, double tolerance) {
-  Circles cs(xyr, tolerance);
-  return cs.select_circles();
+LogicalVector select_non_overlapping(NumericMatrix xyr, 
+                                     const double tolerance, 
+                                     const StringVector& ordering) {
+  
+  int match = -1;
+  try {
+    for (int i = 0; i < OrderingLabels.length(); i++) {
+      if ( OrderingLabels[i] == ordering[0] ) {
+        match = i;
+        break;
+      }
+    }
+    
+    if (match >= 0) {
+      Circles cs(xyr, tolerance);
+      return cs.select_circles(match);
+    }
+    else throw std::invalid_argument("Invalid ordering argument");
+    
+  } catch (std::exception& ex) {
+    forward_exception_to_r(ex);
+  }
+  
+  return NA_LOGICAL;  // not reached
 }
 
