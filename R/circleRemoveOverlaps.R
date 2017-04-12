@@ -139,32 +139,65 @@ circleRemoveOverlaps <- function(x,
     f.obj <- rep(1, nrow(xyr))
   }
   
-  f.con <- .lp_make_constraint_matrix(xyr)
-  f.dir <- rep("<=", nrow(f.con))
-  f.rhs <- rep(1, nrow(f.con))
-  
-  res <- lpSolve::lp("max", f.obj, f.con, f.dir, f.rhs, all.int = TRUE)
+  terms <- .lp_make_terms(xyr)
+
+  res <- lpSolve::lp("max", f.obj, 
+                     const.dir = terms$f.dir,
+                     const.rhs = terms$f.rhs,
+                     dense.const = terms$f.con,
+                     all.int = TRUE)
   
   # return selections as logical vector
   res$solution > 0
 }
 
 
-.lp_make_constraint_matrix <- function(xyr) {
+.lp_make_terms <- function(xyr) {
   N <- nrow(xyr)
-  d <- stats::dist(xyr[, c("x", "y")])
+  d <- as.matrix( stats::dist(xyr[, c("x", "y")]) )
   
-  m <- matrix(0, nrow=N, ncol=N)
-  diag(m) <- 1
+  r <- xyr[, "radius"]
+  rsums <- outer(r, r, "+")
   
-  k <- 1
-  for (i in 1:(N-1)) {
-    ir <- xyr[i, 3]
-    for (j in (i+1):N) {
-      if (d[k] < (ir + xyr[j, 3])) m[i, j] <- 1
-      k <- k + 1
+  overlaps <- 1 * (d < rsums)
+  numovs <- rowSums(overlaps)
+  
+  overlaps[ lower.tri(overlaps) ] <- 0
+  rs <- rowSums(overlaps)
+  cons <- lapply(1:N, function(i) {
+    if (rs[i] > 1) {
+      ids <- which(overlaps[i, ] == 1)
+      n <- length(ids) - 1
+      x <- matrix(1, nrow=2*n, ncol=2)
+      oddrows <- 1:nrow(x) %% 2 == 1
+      x[oddrows, 1] <- i
+      x[!oddrows, 1] <- ids[-1]
+      x
     }
-  }  
+  })
   
-  m
+  cons <- do.call(rbind, cons)
+  cons <- cbind(rep(1:(nrow(cons)/2), each=2), cons)
+  colnames(cons) <- c("constr.id", "circle", "value")
+  
+  f.dir <- rep("<=", nrow(cons)/2)
+
+  # non-overlapping circles
+  ids <- which(numovs == 1)
+  n <- length(ids)
+  
+  if (n > 0) {
+    id0 <- max(cons[, "constr.id"])
+    
+    cons <- rbind(
+      cons,
+      
+      cbind(constr.id = (id0+1):(id0 + n),
+            circle = ids,
+            value = 1) )
+    
+    f.dir <- c(f.dir, rep("==", n))
+  }
+  
+  list(f.con = cons, f.dir = f.dir, f.rhs = rep(1, cons[nrow(cons), "constr.id"]))
 }
