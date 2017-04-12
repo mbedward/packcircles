@@ -42,30 +42,24 @@ as rejected. Iterations continue until all circles have been either
 selected or rejected.
 }
 \details{
-The \code{method} argument specifies whether to use variations of
-the heuristic selection algorithm or linear programming (with package \code{lpSolve}):
+The \code{method} argument specifies whether to use the heuristic algorithm or
+linear programming. The following options select the heuristic algorithm and
+specify how to choose an overlapping circle for rejection at each iteration: 
   \describe{
-    \item{maxov}{Choose a circle whose number of overlaps equals the current maximum.}
-    \item{minov}{Choose a circle whose number of overlaps equals the current 
-    (non-zero) minimum.}
-    \item{largest}{Choose a circle whose size equals the current maximum size of 
-    overlapping circles.}
-    \item{smallest}{Choose a circle whose size equals the current minimum size of 
-    overlapping circles.}
+    \item{maxov}{Choose one of the circles with the greatest number of overlaps.}
+    \item{minov}{Choose one of the circle with the least number of overlaps.}
+    \item{largest}{Choose one of the largest circles.}
+    \item{smallest}{Choose one of the smallest circles.}
     \item{random}{Choose a circle at random.}
-    \item{lp}{Use linear programming to find a solution maximising the total area
-    of circles in the subset. Package lpSolve must be installed for this option.}
   }
   
-When using the heuristic algorithm with a method other than \code{random}, overlapping
-circles are assessed at each step according to the ordering criterion (e.g. having the
-most number of overlaps) and then, if more than one circle meets the criterion, a
-random selection is made from among them.
-
-In tests with random configurations of uniform and non-uniform sized circles, the 
-default \code{maxov} strategy seems to produce the densest subset of non-overlapping
-circles while the \code{minov} strategy often produces very sparse subsets. However,
-results will be highly data dependent.
+Two further options select linear programming:
+  \describe{
+    \item{lparea}{Maximise the total area of circles in the subset.}
+    \item{lpnum}{Maximise the total area of circles in the subset.}
+  }
+  
+The `lpSolve` package must be installed to use the linear programming options.
 }
 \note{
 \emph{This function is experimental} and will almost certainly change before
