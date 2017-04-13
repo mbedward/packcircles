@@ -145,7 +145,8 @@ circleRemoveOverlaps <- function(x,
                      const.dir = terms$f.dir,
                      const.rhs = terms$f.rhs,
                      dense.const = terms$f.con,
-                     all.int = TRUE)
+                     scale = 0,
+                     all.bin = TRUE)
   
   # return selections as logical vector
   res$solution > 0
