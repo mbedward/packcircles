@@ -7,7 +7,7 @@ using namespace Rcpp;
 
 // iterate_layout
 int iterate_layout(NumericMatrix xyr, NumericVector weights, double xmin, double xmax, double ymin, double ymax, int maxiter, bool wrap);
-RcppExport SEXP packcircles_iterate_layout(SEXP xyrSEXP, SEXP weightsSEXP, SEXP xminSEXP, SEXP xmaxSEXP, SEXP yminSEXP, SEXP ymaxSEXP, SEXP maxiterSEXP, SEXP wrapSEXP) {
+RcppExport SEXP _packcircles_iterate_layout(SEXP xyrSEXP, SEXP weightsSEXP, SEXP xminSEXP, SEXP xmaxSEXP, SEXP yminSEXP, SEXP ymaxSEXP, SEXP maxiterSEXP, SEXP wrapSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
@@ -25,7 +25,7 @@ END_RCPP
 }
 // doCirclePack
 List doCirclePack(List internalList, DataFrame externalDF);
-RcppExport SEXP packcircles_doCirclePack(SEXP internalListSEXP, SEXP externalDFSEXP) {
+RcppExport SEXP _packcircles_doCirclePack(SEXP internalListSEXP, SEXP externalDFSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
@@ -37,7 +37,7 @@ END_RCPP
 }
 // do_progressive_layout
 DataFrame do_progressive_layout(NumericVector radii);
-RcppExport SEXP packcircles_do_progressive_layout(SEXP radiiSEXP) {
+RcppExport SEXP _packcircles_do_progressive_layout(SEXP radiiSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
@@ -48,7 +48,7 @@ END_RCPP
 }
 // select_non_overlapping
 LogicalVector select_non_overlapping(NumericMatrix xyr, const double tolerance, const StringVector& ordering);
-RcppExport SEXP packcircles_select_non_overlapping(SEXP xyrSEXP, SEXP toleranceSEXP, SEXP orderingSEXP) {
+RcppExport SEXP _packcircles_select_non_overlapping(SEXP xyrSEXP, SEXP toleranceSEXP, SEXP orderingSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;

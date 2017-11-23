@@ -16,6 +16,6 @@
 #' @name packcircles
 #' 
 #' @importFrom Rcpp sourceCpp
-#' @useDynLib packcircles
+#' @useDynLib packcircles, .registration = TRUE
 #' 
 NULL

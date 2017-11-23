@@ -18,14 +18,20 @@
 #'     \item{smallest}{Choose one of the smallest circles.}
 #'     \item{random}{Choose a circle at random.}
 #'   }
+#' Of these, the 'maxov' option generally seems to be best heuristic for maximizing
+#' the number of circles retained. The other options are provided for provided
+#' for comparison and experiment. Some often perform surprisingly poorly, especially
+#' 'minov'.
 #'   
 #' Two further options select linear programming:
 #'   \describe{
 #'     \item{lparea}{Maximise the total area of circles in the subset.}
-#'     \item{lpnum}{Maximise the total area of circles in the subset.}
+#'     \item{lpnum}{Maximise the total number of circles in the subset.}
 #'   }
 #'   
 #' The `lpSolve` package must be installed to use the linear programming options.
+#' These options will find an optimal subset, but for anything other than a small
+#' number of initial circles the running time can be prohibitive.
 #' 
 #' 
 #' @param x A matrix or data frame containing circle x-y centre coordinates

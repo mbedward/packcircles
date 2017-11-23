@@ -167,8 +167,8 @@ std::map<int, pair<complex<double>, double> > CirclePack(
        it != internal.end(); ++it) {
          
     if (contains(external, it->first)) {
-      char msg[50];
-      sprintf(msg, "ID=%d is in both internal and external map keys", it->first);
+      char msg[60];
+      snprintf(msg, sizeof(msg), "ID=%d is in both internal and external map keys", it->first);
       stop(msg);
     }
     
@@ -279,7 +279,7 @@ List doCirclePack(List internalList, DataFrame externalDF) {
     double r = it->second.second;
     out_radii(k) = r;
     
-    sprintf(name, "%d", k+1);
+    snprintf(name, sizeof(name), "%d", k+1);
     out_rownames(k) = name;
     
     k++ ;

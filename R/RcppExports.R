@@ -2,18 +2,18 @@
 # Generator token: 10BE3573-1514-4C36-9D1C-5A225CD40393
 
 iterate_layout <- function(xyr, weights, xmin, xmax, ymin, ymax, maxiter, wrap) {
-    .Call('packcircles_iterate_layout', PACKAGE = 'packcircles', xyr, weights, xmin, xmax, ymin, ymax, maxiter, wrap)
+    .Call(`_packcircles_iterate_layout`, xyr, weights, xmin, xmax, ymin, ymax, maxiter, wrap)
 }
 
 doCirclePack <- function(internalList, externalDF) {
-    .Call('packcircles_doCirclePack', PACKAGE = 'packcircles', internalList, externalDF)
+    .Call(`_packcircles_doCirclePack`, internalList, externalDF)
 }
 
 do_progressive_layout <- function(radii) {
-    .Call('packcircles_do_progressive_layout', PACKAGE = 'packcircles', radii)
+    .Call(`_packcircles_do_progressive_layout`, radii)
 }
 
 select_non_overlapping <- function(xyr, tolerance, ordering) {
-    .Call('packcircles_select_non_overlapping', PACKAGE = 'packcircles', xyr, tolerance, ordering)
+    .Call(`_packcircles_select_non_overlapping`, xyr, tolerance, ordering)
 }
 
