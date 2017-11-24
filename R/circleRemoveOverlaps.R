@@ -2,11 +2,7 @@
 #' 
 #' Given an initial set of circles, this function identifies a subset of
 #' non-overlapping circles using a simple heuristic algorithm. Circle positions
-#' do not change. At each iteration the numnber of overlaps is checked for each
-#' candidate circle and any non-overlapping circles added to the selected
-#' subset. Then a single overlapping circle is chosen (see Details) from among
-#' the remainder and marked as rejected. Iterations continue until all circles
-#' have been either selected or rejected.
+#' remain fixed.
 #' 
 #' The \code{method} argument specifies whether to use the heuristic algorithm or
 #' linear programming. The following options select the heuristic algorithm and
@@ -18,10 +14,14 @@
 #'     \item{smallest}{Choose one of the smallest circles.}
 #'     \item{random}{Choose a circle at random.}
 #'   }
-#' Of these, the 'maxov' option generally seems to be best heuristic for maximizing
-#' the number of circles retained. The other options are provided for provided
-#' for comparison and experiment. Beware that some often perform surprisingly poorly, 
-#' especially 'minov'.
+#' At each iteration the numnber of overlaps is checked for each candidate
+#' circle and any non-overlapping circles added to the selected subset. Then a
+#' single overlapping circle is chosen, based on the method being used, from
+#' among the remainder and marked as rejected. Iterations continue until all
+#' circles have been either selected or rejected. The 'maxov' option (default)
+#' generally seems to perform best at maximizing the number of circles retained.
+#' The other options are provided for comparison and experiment. Beware that
+#' some can perform surprisingly poorly, especially 'minov'.
 #'   
 #' Two further options select linear programming:
 #'   \describe{

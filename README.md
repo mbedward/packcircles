@@ -31,6 +31,13 @@ in Computing Systems*, 2006, pp. 517-520.
 [ACM](https://dl.acm.org/citation.cfm?id=1124851).
 
 
+The function `circleRemoveOverlaps` takes an initial set of overlapping circles
+and attempts to find a non-overlapping subset or, optionally, a subset with some
+specified degree of overlap. Circle positions remain fixed. It provides several
+fast heuristic algorithms to choose from, as well as two based on linear 
+programming. For the latter, package lpSolve must be installed.
+
+
 The function `circleGraphLayout` is an initial Rcpp port of an algorithm described by
 [Collins and Stephenson (2003)](http://www.sciencedirect.com/science/article/pii/S0925772102000998)
 to find an arrangement of circles which corresponds to a graph of desired circle tangencies.
