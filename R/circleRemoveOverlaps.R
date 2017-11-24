@@ -14,7 +14,7 @@
 #'     \item{smallest}{Choose one of the smallest circles.}
 #'     \item{random}{Choose a circle at random.}
 #'   }
-#' At each iteration the numnber of overlaps is checked for each candidate
+#' At each iteration the number of overlaps is checked for each candidate
 #' circle and any non-overlapping circles added to the selected subset. Then a
 #' single overlapping circle is chosen, based on the method being used, from
 #' among the remainder and marked as rejected. Iterations continue until all

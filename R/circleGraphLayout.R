@@ -30,7 +30,7 @@
 #' @param internal A list of vectors of circle ID values where, in each vector,
 #'   the first element is the ID of an internal circle and the remaining
 #'   elements are the IDs of that circle's neighbours arranged as a cycle. The
-#'   cycle may be clockwise or anti-clockwise but the same orering must be used
+#'   cycle may be clockwise or anti-clockwise but the same ordering must be used
 #'   for all vectors.
 #'   
 #' @param external A data.frame or matrix of external circle radii, with circle
