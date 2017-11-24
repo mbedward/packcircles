@@ -1,5 +1,16 @@
 # NEWS packcircles
 
+Version 0.3.0 2017-11-24
+
+* Added `circleRemoveOverlaps` which takes a set of circles and identifies a
+  subset of non-overlapping circles. The function can also be set to allow
+  some degree of overlap or require space between circles. The function uses
+  either a fast heuristic algorithm (several choices) or linear programming
+  (requires package lpSolve).
+  
+* Replaced use of `sprintf` with `snprintf` in `pads_circle_pack.cpp`
+  (graph-based circle packing) to address CRAN warning.
+
 Version 0.2.0 2017-04-05
 
 * Added `circleProgressiveLayout` which deterministically places each circle in 

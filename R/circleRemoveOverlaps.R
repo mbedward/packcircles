@@ -1,12 +1,12 @@
 #' Filters a set of circles to remove all overlaps
 #' 
 #' Given an initial set of circles, this function identifies a subset of
-#' non-overlapping circles using a simple heuristic algorithm. At each
-#' iteration the numnber of overlaps is checked for each candidate circle and
-#' any non-overlapping circles added to the selected subset. Then a single 
-#' overlapping circle is chosen (see Details) from among the remainder and marked
-#' as rejected. Iterations continue until all circles have been either 
-#' selected or rejected.
+#' non-overlapping circles using a simple heuristic algorithm. Circle positions
+#' do not change. At each iteration the numnber of overlaps is checked for each
+#' candidate circle and any non-overlapping circles added to the selected
+#' subset. Then a single overlapping circle is chosen (see Details) from among
+#' the remainder and marked as rejected. Iterations continue until all circles
+#' have been either selected or rejected.
 #' 
 #' The \code{method} argument specifies whether to use the heuristic algorithm or
 #' linear programming. The following options select the heuristic algorithm and
@@ -20,8 +20,8 @@
 #'   }
 #' Of these, the 'maxov' option generally seems to be best heuristic for maximizing
 #' the number of circles retained. The other options are provided for provided
-#' for comparison and experiment. Some often perform surprisingly poorly, especially
-#' 'minov'.
+#' for comparison and experiment. Beware that some often perform surprisingly poorly, 
+#' especially 'minov'.
 #'   
 #' Two further options select linear programming:
 #'   \describe{

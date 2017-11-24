@@ -1,7 +1,6 @@
 ## Test environments
-* Ubuntu 12.04 (Travis CI)
+* Ubuntu 14.04 (Travis CI)
 * win-builder (release and devel)
-* Mac OSX 10.11.6
 
 ## R CMD check results
 
