@@ -119,15 +119,21 @@ void place_circle(Node* a, Node* b, Node* c) {
   double dx = b->x - a->x;
   double dy = b->y - a->y;
   double dc = sqrt(dx * dx + dy * dy);
-  double cos = (db * db + dc * dc - da * da) / (2 * db * dc);
-  double theta = acos(cos);
-  double x = cos * db;
-  double h = sin(theta) * db;
-  dx /= dc;
-  dy /= dc;
-  
-  c->x = a->x + x * dx + h * dy;
-  c->y = a->y + x * dy - h * dx;
+  if (dc > 0.0) {
+    double cos = (db * db + dc * dc - da * da) / (2 * db * dc);
+    double theta = acos(cos);
+    double x = cos * db;
+    double h = sin(theta) * db;
+    dx /= dc;
+    dy /= dc;
+    
+    c->x = a->x + x * dx + h * dy;
+    c->y = a->y + x * dy - h * dx;
+  }
+  else {
+    c->x = a->x + db;
+    c->y = a->y;
+  }
 }
 
 
@@ -186,55 +192,52 @@ void place_circles(Node* firstnode) {
       
       a = nearestnode; 
       b = nearestnode->next;
-      skip=0;
+      skip=false;
     }
     
     place_circle(a, b, c);
     
     // Search for possible closest intersection
-    int isect = 0;
-    int s1 = 0;
-    int s2 = 0;
+    bool isect = false;
+    Node* j = b->next;
+    Node* k = a->prev;
     
-    Node* j;
-    for(j = b->next; j != b; j = j->next, s1++) {
-      if( c->intersects(j) ) {
-        isect = 1;
-        break;
-      }
-    }
+    double sj = b->radius;
+    double sk = a->radius;
     
-    if(isect == 1) {
-      Node *k;
-      for(k = a->prev; k != j->prev; k = k->prev, s2++) {
-        if( c->intersects(k) ) {
-          if(s2 < s1) {
-            isect = -1;
-            j = k;
-          }
+    do {
+      if (sj <= sk) {
+        if ( j->intersects(c) ) {
+          a->splice(j);
+          b = j;
+          skip = true;
+          isect = true;
           break;
         }
+        sj += j->radius;
+        j = j->next;
       }
-    }
+      else {
+        if( c->intersects(k) ) {
+          k->splice(b);
+          a = k;
+          skip = true;
+          isect = true;
+          break;
+        }
+        sk += k->radius;
+        k = k->prev;
+      }
+    } while (j != k->next);
     
     // Update the node chain
-    if(isect == 0) {
+    if(!isect) {
       c->place_after(a);
       b = c;
       
       skip = false;
       
       c = c->insertnext;
-    }
-    else if(isect > 0) {
-      a->splice(j);
-      b = j;
-      skip = true;
-    } 
-    else if (isect < 0) {
-      j->splice(b);
-      a = j;
-      skip = true;
     }
   }
 }
