@@ -3,7 +3,7 @@ Type: Package
 Version: 0.3.1
 Title: Circle Packing
 Description: Simple algorithms for circle packing.
-Date: 2017-11-24
+Date: 2018-01-09
 Authors@R: c(
   person("Michael", "Bedward", role = c("aut", "cre"), email = "michael.bedward@gmail.com"),
   person("David", "Eppstein", role = "aut", email = "david.eppstein@gmail.com", 
