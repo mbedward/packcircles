@@ -1,13 +1,7 @@
 ## Summary
 
-This submission adds new package features and also addresses the following warning
-received by email from CRAN maintainers:
-
-    Found the following significant warnings:
-    pads_circle_pack.cpp:233:6: warning: ‘sprintf’ may write a terminating nul
-    path the end of the destination [-Wformat-overflow=] 
-  
-Instances of 'sprintf' have been replaced by 'snprintf' to ensure safety.
+This submission fixes a problem where function circleProgressiveLayout sometimes
+returned a layout with overlapping circles.
 
 ## Test environments
 

@@ -1,5 +1,11 @@
 # NEWS packcircles
 
+Version 0.3.1 2018-01-09
+
+* Fixed a problem where function circleProgressiveLayout sometimes returned
+  a layout with overlapping circles. Thanks to Jeffrey Lewis for reporting
+  and Peter Menzel for code changes.
+
 Version 0.3.0 2017-11-24
 
 * Added `circleRemoveOverlaps` which takes a set of circles and identifies a
