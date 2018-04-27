@@ -167,9 +167,9 @@ std::map<int, pair<complex<double>, double> > CirclePack(
        it != internal.end(); ++it) {
          
     if (contains(external, it->first)) {
-      char msg[60];
-      snprintf(msg, sizeof(msg), "ID=%d is in both internal and external map keys", it->first);
-      stop(msg);
+      std::string msg("ID found in both internal and external map keys: ");
+      msg += Rcpp::toString(it->first);
+      Rcpp::stop(msg);
     }
     
     radii[it->first] = 1.0;
@@ -265,8 +265,7 @@ List doCirclePack(List internalList, DataFrame externalDF) {
   NumericVector out_ys(N);
   NumericVector out_radii(N);
   StringVector  out_rownames(N);
-  char name[10];
-  
+
   for (map<int, pair<complex<double>, double> >::iterator it = packing.begin();
        it != packing.end(); ++it) {
          
@@ -279,8 +278,7 @@ List doCirclePack(List internalList, DataFrame externalDF) {
     double r = it->second.second;
     out_radii(k) = r;
     
-    snprintf(name, sizeof(name), "%d", k+1);
-    out_rownames(k) = name;
+    out_rownames(k) = Rcpp::toString(k+1);
     
     k++ ;
   }
