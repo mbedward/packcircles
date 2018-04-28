@@ -1,7 +1,7 @@
 ## Summary
 
-This submission fixes a problem where function circleProgressiveLayout sometimes
-returned a layout with overlapping circles.
+This submission removes uses of snprintf from the source file pads_circle_pack.cpp
+to address a CRAN warning.
 
 ## Test environments
 

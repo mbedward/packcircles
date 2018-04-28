@@ -1,5 +1,10 @@
 # NEWS packcircles
 
+Version 0.3.2 2018-04-28
+
+* Minor change in `pads_circle_pack.cpp` (graph-based circle packing) 
+  to address a CRAN warning.
+
 Version 0.3.1 2018-01-09
 
 * Fixed a problem where function circleProgressiveLayout sometimes returned
