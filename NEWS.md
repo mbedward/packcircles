@@ -2,7 +2,8 @@
 
 Version 0.3.3 2018-09-18
 
-* Minor updates to comply with the introduction of STRICT_R_HEADERS in Rcpp.
+* Minor updates to comply with the planned introduction of STRICT_R_HEADERS
+  in Rcpp.
 
 Version 0.3.2 2018-04-28
 

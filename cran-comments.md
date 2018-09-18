@@ -1,12 +1,12 @@
 ## Summary
 
-This submission removes uses of snprintf from the source file pads_circle_pack.cpp
-to address a CRAN warning.
+This submission has minor updates to C++ sources to comply with the planned
+introduction of the STRICT_R_HEADERS definition in Rcpp.
 
 ## Test environments
 
   * Mac OSX 10.11.6
-  * Ubuntu 14.04 (Travis CI)
+  * Ubuntu 14.04.5 (Travis CI)
   * win-builder (release and devel)
 
 ## R CMD check results
@@ -17,4 +17,4 @@ There were no NOTES (other than maintainer details).
 
 ## Downstream dependencies
 
-There are currently no downstream dependencies for this package.
+1 downstream dependency (cartogram) for which R CMD check succeeded.
