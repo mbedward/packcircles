@@ -1,8 +1,10 @@
+#define STRICT_R_HEADERS
 #include <Rcpp.h>
 using namespace Rcpp;
 
 #include <map>
 #include <vector>
+#include <float.h>
 
 using namespace std;
 
@@ -205,7 +207,7 @@ private:
   // helper function - returns a logical vector indicating which
   // circles are included and largest amongst included
   LogicalVector flag_smallest(const LogicalVector& include) {
-    NumericVector radii(_circles.size(), DOUBLE_XMAX);
+    NumericVector radii(_circles.size(), DBL_MAX);
     for (unsigned int i = 0; i < _circles.size(); i++) {
       if (include[i]) {
         radii[i] = _circles.at(i).radius;

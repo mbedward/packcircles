@@ -55,7 +55,9 @@
  *  
  */
 
+#define STRICT_R_HEADERS
 #include <Rcpp.h>
+#include <float.h>
 using namespace Rcpp;
 
 const double INTERSECTION_TOL = 1.0e-4;
