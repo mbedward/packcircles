@@ -14,6 +14,6 @@ There were no ERRORs or WARNINGs.
 
 There were no NOTES (other than maintainer details).
 
-## Downstream dependencies
+## Reverse dependencies
 
-2 downstream dependency (cartogram, R.SamBada) for which R CMD check succeeded.
+2 reverse dependencies (cartogram, R.SamBada) were identified. R CMD check succeeded for both.
