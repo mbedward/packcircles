@@ -1,3 +1,8 @@
+## Resubmission
+
+I have fixed URLs for publications cited in the README (DOI URLs for stability 
+where available) and provided a better package description.
+
 ## Summary
 
 This submission has minor updates to one function and to code in vignettes to

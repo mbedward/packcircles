@@ -2,7 +2,7 @@ Package: packcircles
 Type: Package
 Version: 0.3.4
 Title: Circle Packing
-Description: Simple algorithms for circle packing.
+Description: Algorithms for circle packing: arrangements of non-overlapping circles
 Date: 2020-12-10
 Authors@R: c(
   person("Michael", "Bedward", role = c("aut", "cre"), email = "michael.bedward@gmail.com"),
@@ -14,14 +14,14 @@ Authors@R: c(
 URL: https://github.com/mbedward/packcircles
 BugReports: https://github.com/mbedward/packcircles/issues
 Depends: R (>= 3.2)
-Imports: Rcpp (>= 0.12.18)
+Imports: Rcpp (>= 1.0.0)
 Suggests: ggiraph,
   ggplot2, 
   knitr,
   rmarkdown,
   lpSolve
 VignetteBuilder: knitr
-LinkingTo: Rcpp (>= 0.12.10)
+LinkingTo: Rcpp (>= 1.0.0)
 LazyData: true
 License: MIT + file LICENSE
 RoxygenNote: 7.1.1

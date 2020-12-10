@@ -1,5 +1,5 @@
 # packcircles
-R package for circle packing.
+R package for circle packing: finding arrangements of non-overlapping circles
 
 [![Travis Build Status](https://travis-ci.org/mbedward/packcircles.svg?branch=master)](https://travis-ci.org/mbedward/packcircles)
 
@@ -25,10 +25,7 @@ denoted by their sizes, by consecutively placing each circle externally tangent
 to two previously placed circles while avoiding overlaps. It was adapted from a
 [version written in C](https://github.com/pmenzel/packCircles) by Peter Menzel.
 The underlying algorithm is described in the paper: *Visualization of large
-hierarchical data by circle packing* by Weixin Wang, Hui Wang, Guozhong Dai, and
-Hongan Wang. Published in *Proceedings of the SIGCHI Conference on Human Factors
-in Computing Systems*, 2006, pp. 517-520.
-[ACM](https://dl.acm.org/citation.cfm?id=1124851).
+hierarchical data by circle packing* by [Weixin Wang et al. (2006)](https://doi.org/10.1145/1124772.1124851).
 
 
 The function `circleRemoveOverlaps` takes an initial set of overlapping circles
@@ -39,10 +36,10 @@ programming. For the latter, package lpSolve must be installed.
 
 
 The function `circleGraphLayout` is an initial Rcpp port of an algorithm described by
-[Collins and Stephenson (2003)](http://www.sciencedirect.com/science/article/pii/S0925772102000998)
+[Collins and Stephenson (2003)](https://doi.org/10.1016/S0925-7721(02)00099-8)
 to find an arrangement of circles which corresponds to a graph of desired circle tangencies.
 The implementation is based on a Python version by David Eppstein (see CirclePack.py in
-the [PADS](http://www.ics.uci.edu/~eppstein/PADS/) library.
+the [PADS](https://www.ics.uci.edu/~eppstein/PADS/) library.
 
 To install:
 
