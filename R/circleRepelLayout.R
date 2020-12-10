@@ -7,7 +7,7 @@
 #' maximum number of iterations, the last attempt is returned.
 #' 
 #' The algorithm is adapted from a demo written in the Processing language by 
-#' \href{http://www.cricketschirping.com/processing/CirclePacking1/CirclePacking1.pde}{Sean McCullough}.
+#' Sean McCullough (this no longer seems to be available online).
 #' Each circle in the input data is compared to those following it. If two 
 #' circles overlap, they are moved apart such that the distance moved by each is
 #' proportional to the radius of the other, loosely simulating inertia. So when 

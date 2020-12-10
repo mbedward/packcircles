@@ -5,8 +5,7 @@ use suggested packages conditionally.
 
 ## Test environments
 
-  * Mac OSX 10.11.6
-  * Ubuntu 14.04.5 (Travis CI)
+  * Ubuntu 16.04.6 LTS (Travis CI)
   * win-builder (release and devel)
 
 ## R CMD check results
