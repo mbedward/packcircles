@@ -33,6 +33,8 @@
 #' \dontrun{
 #' 
 #' # Graph the result with ggplot
+#' library(ggplot2)
+#' 
 #' dat.gg <- circleLayoutVertices(packing)
 #' 
 #' ggplot(data = dat.gg, aes(x, y, group = id)) +

@@ -4,8 +4,13 @@
 \alias{circleLayoutVertices}
 \title{Generate a set of circle vertices suitable for plotting}
 \usage{
-circleLayoutVertices(layout, npoints = 25, xysizecols = 1:3,
-  sizetype = c("radius", "area"), idcol = NULL)
+circleLayoutVertices(
+  layout,
+  npoints = 25,
+  xysizecols = 1:3,
+  sizetype = c("radius", "area"),
+  idcol = NULL
+)
 }
 \arguments{
 \item{layout}{A matrix or data.frame of circle data (x, y, size). May also 

@@ -3,7 +3,6 @@
 \docType{package}
 \name{packcircles}
 \alias{packcircles}
-\alias{packcircles-package}
 \title{packcircles: Simple algorithms for circle packing}
 \description{
 This package provides several algorithms to find non-overlapping

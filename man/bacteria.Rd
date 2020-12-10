@@ -4,12 +4,14 @@
 \name{bacteria}
 \alias{bacteria}
 \title{Abundance of bacteria}
-\format{A data frame with 167 rows and 3 variables:
+\format{
+A data frame with 167 rows and 3 variables:
 \describe{
   \item{value}{measured abundance}
   \item{colour}{preferred colour for display}
   \item{label}{taxon name}
-}}
+}
+}
 \usage{
 bacteria
 }

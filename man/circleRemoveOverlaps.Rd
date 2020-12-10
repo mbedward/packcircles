@@ -4,9 +4,13 @@
 \alias{circleRemoveOverlaps}
 \title{Filters a set of circles to remove all overlaps}
 \usage{
-circleRemoveOverlaps(x, xysizecols = 1:3, sizetype = c("area", "radius"),
-  tolerance = 1, method = c("maxov", "minov", "largest", "smallest",
-  "random", "lparea", "lpnum"))
+circleRemoveOverlaps(
+  x,
+  xysizecols = 1:3,
+  sizetype = c("area", "radius"),
+  tolerance = 1,
+  method = c("maxov", "minov", "largest", "smallest", "random", "lparea", "lpnum")
+)
 }
 \arguments{
 \item{x}{A matrix or data frame containing circle x-y centre coordinates

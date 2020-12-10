@@ -1,5 +1,10 @@
 # NEWS packcircles
 
+Version 0.3.4 2020-12-10
+
+* Minor updates to comply with R extensions convention for using packages 
+  listed under 'Suggests'.
+
 Version 0.3.3 2018-09-18
 
 * Minor updates to comply with the planned introduction of STRICT_R_HEADERS

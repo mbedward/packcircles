@@ -9,6 +9,17 @@ vignette: >
   \usepackage[utf8]{inputenc}
 ---
 
+```{r setup, include = FALSE}
+
+if (!requireNamespace("ggplot2", quietly = TRUE)) {
+  # Cannot run graph code without ggplot2 so turn off chunk evaluation
+  warning("Package ggplot2 is required for this vignette")
+  knitr::opts_chunk$set(eval = FALSE)
+}
+
+```
+
+
 ## Circle packing algorithms
 
 A large number of circle packing algorithms, both deterministic and stochastic, have been developed. This package provides several of the simpler ones from which you can choose.
@@ -64,6 +75,7 @@ The returned value is a list with elements for the layout and the number
 of iterations performed.
 
 ```{r}
+
 library(packcircles)
 
 res <- circleRepelLayout(areas, xlim = limits, ylim = limits)
@@ -95,6 +107,7 @@ head(dat.gg)
 And now we can draw the layout.
 
 ```{r, fig.width=7, fig.height=4}
+
 library(ggplot2)
 
 t <- theme_bw() +

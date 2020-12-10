@@ -4,9 +4,16 @@
 \alias{circleRepelLayout}
 \title{Arranges circles by iterative pair-wise repulsion within a bounding rectangle}
 \usage{
-circleRepelLayout(x, xlim, ylim, xysizecols = c(1, 2, 3),
-  sizetype = c("area", "radius"), maxiter = 1000, wrap = TRUE,
-  weights = 1)
+circleRepelLayout(
+  x,
+  xlim,
+  ylim,
+  xysizecols = c(1, 2, 3),
+  sizetype = c("area", "radius"),
+  maxiter = 1000,
+  wrap = TRUE,
+  weights = 1
+)
 }
 \arguments{
 \item{x}{Either a vector of circle sizes (areas or radii) or a matrix or 

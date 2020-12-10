@@ -1,7 +1,7 @@
 ## Summary
 
-This submission has minor updates to C++ sources to comply with the planned
-introduction of the STRICT_R_HEADERS definition in Rcpp.
+This submission has minor updates to one function and to code in vignettes to
+use suggested packages conditionally.
 
 ## Test environments
 
