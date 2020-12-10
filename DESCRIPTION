@@ -25,3 +25,4 @@ LinkingTo: Rcpp (>= 0.12.10)
 LazyData: true
 License: MIT + file LICENSE
 RoxygenNote: 7.1.1
+Encoding: UTF-8
