@@ -1,7 +1,7 @@
 ## Summary
 
 This submission has minor updates to one function and to code in vignettes to
-use suggested packages conditionally.
+use suggested packages conditionally as per Writing R Extensions.
 
 ## Test environments
 
@@ -16,4 +16,4 @@ There were no NOTES (other than maintainer details).
 
 ## Downstream dependencies
 
-1 downstream dependency (cartogram) for which R CMD check succeeded.
+2 downstream dependency (cartogram, R.SamBada) for which R CMD check succeeded.
