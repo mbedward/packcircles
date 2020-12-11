@@ -1,7 +1,7 @@
-## Resubmission
+## Resubmission 2
 
-I have fixed URLs for publications cited in the README (DOI URLs for stability 
-where available) and provided a better package description.
+I have now fixed all URLs in R source and docs, and provided a better 
+package description.
 
 ## Summary
 
