@@ -10,11 +10,11 @@
  *
  * This implementation is based on Python code by David Eppstein: specifically
  * the file CirclePack.py which is part of PADS (Python Algorithms and 
- * Data Structures) library, available at: http://www.ics.uci.edu/~eppstein/PADS/
+ * Data Structures) library, available at: https://www.ics.uci.edu/~eppstein/PADS/
  *
  * Original license header:
  *
- * PADS is licensed under the MIT Licence (http://opensource.org/licenses/MIT):
+ * PADS is licensed under the MIT Licence (https://opensource.org/licenses/MIT):
  *
  * Copyright (c) 2002-2015, David Eppstein
  *

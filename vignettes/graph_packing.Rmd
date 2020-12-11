@@ -11,7 +11,7 @@ vignette: >
 
 Another approach to circle packing is to begin with a specification of circle sizes and tangencies (ie. 
 which circles touch which other circles) and then search for an arrangement satisfying this. Such an 
-algorithm was described by Collins and Stephenson in a [2003 paper](http://www.sciencedirect.com/science/article/pii/S0925772102000998) in the journal Computation Geometry Theory and Applications. A version of their algorithm was implemented in Python by David Eppstein as part of his PADS library (see [CirclePack.py](http://www.ics.uci.edu/~eppstein/PADS/)). A port of this version to R/Rcpp is included in the packcircles package.
+algorithm was described by Collins and Stephenson in a [2003 paper](https://doi.org/10.1016/S0925-7721(02)00099-8) in the journal Computation Geometry Theory and Applications. A version of their algorithm was implemented in Python by David Eppstein as part of his PADS library (see [CirclePack.py](https://www.ics.uci.edu/~eppstein/PADS/)). A port of this version to R/Rcpp is included in the packcircles package.
 
 In the figure below, the graph on the left represents the desired pattern of circle tangencies. Circles 5, 7, 8 and 9 are *internal*, while the remaining circles are *external*. The packing on the right shows an arrangement of circles which conforms to the input graph.
 

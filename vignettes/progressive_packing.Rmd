@@ -32,10 +32,7 @@ origin respectively. Subsequent circles are placed so that each:
   * and is as close as possible to the origin.
 
 The algorithm was described in the paper: *Visualization of large hierarchical
-data by circle packing* by Weixin Wang, Hui Wang, Guozhong Dai, and Hongan Wang.
-Published in *Proceedings of the SIGCHI Conference on Human Factors in Computing
-Systems*, 2006, pp. 517-520. [ACM](https://dl.acm.org/citation.cfm?id=1124851).
-
+data by circle packing* by [Weixin Wang et al. (2006)](https://doi.org/10.1145/1124772.1124851).
 The implementation in this package is based on a [version written in C by Peter 
 Menzel](https://github.com/pmenzel/packCircles).
 

@@ -2,7 +2,7 @@ language: r
 sudo: false
 cache: packages
 warnings_are_errors: true
-cran: http://cran.rstudio.com
+cran: https://cran.rstudio.com
 
 env:
   - VALGRIND_OPTS='--leak-check=full --track-origins-yes'

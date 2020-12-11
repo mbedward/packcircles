@@ -20,11 +20,11 @@
  *  "Visualization of large hierarchical data by circle packing" 
  *  by Weixin Wang, Hui Wang, Guozhong Dai, and Hongan Wang
  *  in Proceedings of the SIGCHI Conference on Human Factors in Computing Systems, 2006, pp. 517-520
- *  https://dl.acm.org/citation.cfm?id=1124851
+ *  https://doi.org/10.1145/1124772.1124851
  *
  *  Source code is partially based on a implementation of this algorithm
  *  in the ProtoVis javascript library:
- *  http://mbostock.github.io/protovis/
+ *  https://mbostock.github.io/protovis/
  *
  *
  * ========== Original license (BSD 2-clause simplified) ==========
