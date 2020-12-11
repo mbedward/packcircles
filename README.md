@@ -1,5 +1,5 @@
 # packcircles
-R package for circle packing: finding arrangements of non-overlapping circles
+R package for circle packing. Algorithms to find arrangements of non-overlapping circles
 
 [![Travis Build Status](https://travis-ci.org/mbedward/packcircles.svg?branch=master)](https://travis-ci.org/mbedward/packcircles)
 
