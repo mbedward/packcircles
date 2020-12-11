@@ -1,7 +1,9 @@
-## Resubmission 2
+## Resubmission
 
-I have now fixed all URLs in R source and docs, and provided a better 
-package description.
+Description field has been fixed.
+
+There is a warning about a possibly invalid URL (https://doi.org/10.1145/1124772.1124851)
+but I have confirmed that it resolves correctly to the relevant publication.
 
 ## Summary
 
