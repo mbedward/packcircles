@@ -1,9 +1,10 @@
 ## Resubmission
 
-Description field has been fixed.
+Invalid description field has been fixed.
 
 There is a warning about a possibly invalid URL (https://doi.org/10.1145/1124772.1124851)
-but I have confirmed that it resolves correctly to the relevant publication.
+for a cited reference, but I have confirmed that it resolves correctly to the 
+publication web page.
 
 ## Summary
 
