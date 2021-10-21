@@ -5,6 +5,11 @@
 
 using namespace Rcpp;
 
+#ifdef RCPP_USE_GLOBAL_ROSTREAM
+Rcpp::Rostream<true>&  Rcpp::Rcout = Rcpp::Rcpp_cout_get();
+Rcpp::Rostream<false>& Rcpp::Rcerr = Rcpp::Rcpp_cerr_get();
+#endif
+
 // iterate_layout
 int iterate_layout(NumericMatrix xyr, NumericVector weights, double xmin, double xmax, double ymin, double ymax, int maxiter, bool wrap);
 RcppExport SEXP _packcircles_iterate_layout(SEXP xyrSEXP, SEXP weightsSEXP, SEXP xminSEXP, SEXP xmaxSEXP, SEXP yminSEXP, SEXP ymaxSEXP, SEXP maxiterSEXP, SEXP wrapSEXP) {
