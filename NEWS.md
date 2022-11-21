@@ -2,8 +2,8 @@
 
 Version 0.3.5 2022-11-17
 
-* Update ggiraph dependency to version 0.8.4 to fix CRAN error when building
-  vignettes.
+* Update ggiraph dependency to version 0.8.4 to fix error when building
+  one of the vignettes.
 
 Version 0.3.4 2020-12-10
 
