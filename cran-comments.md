@@ -1,3 +1,8 @@
+## Resubmission
+
+Re-formatted NEWS.md to address NOTE in previous submission about missing
+NEWS items. Also fixed fixed format of a DOI citation.
+
 ## Summary
 
 This submission updates the version number for the suggested package ggiraph
@@ -12,9 +17,7 @@ to fix an error that with building one of the vignettes.
 
 There were no ERRORs or WARNINGs.
 
-There were no NOTES (other than maintainer details) for release version. For
-the devel version there was a NOTE about missing news items, however an updated
-NEWS.md file is available at the package URL.
+There were no NOTES (other than maintainer details)
 
 ## Reverse dependencies
 

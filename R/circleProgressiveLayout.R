@@ -8,7 +8,7 @@
 #' \emph{Visualization of large hierarchical data by circle packing}
 #' by Weixin Wang, Hui Wang, Guozhong Dai, and Hongan Wang. Published
 #' in \emph{Proceedings of the SIGCHI Conference on Human Factors in Computing Systems},
-#' 2006, pp. 517-520 \url{https://doi.org/10.1145/1124772.1124851}
+#' 2006, pp. 517-520 \doi{10.1145/1124772.1124851}
 #' 
 #' The implementation here was adapted from a version written in C by Peter Menzel:
 #' \url{https://github.com/pmenzel/packCircles}.
