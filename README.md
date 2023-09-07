@@ -1,7 +1,9 @@
+<!-- badges: start -->
+[![R-CMD-check](https://github.com/mbedward/packcircles/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/mbedward/packcircles/actions/workflows/R-CMD-check.yaml)
+<!-- badges: end -->
+
 # packcircles
 R package for circle packing. Algorithms to find arrangements of non-overlapping circles
-
-[![Travis Build Status](https://travis-ci.org/mbedward/packcircles.svg?branch=master)](https://travis-ci.org/mbedward/packcircles)
 
 This package provides functions to find non-overlapping arrangements of circles.
 
@@ -25,7 +27,8 @@ denoted by their sizes, by consecutively placing each circle externally tangent
 to two previously placed circles while avoiding overlaps. It was adapted from a
 [version written in C](https://github.com/pmenzel/packCircles) by Peter Menzel.
 The underlying algorithm is described in the paper: *Visualization of large
-hierarchical data by circle packing* by [Weixin Wang et al. (2006)](https://doi.org/10.1145/1124772.1124851).
+hierarchical data by circle packing* by 
+[Weixin Wang et al. (2006)](https://doi.org/10.1145/1124772.1124851).
 
 
 The function `circleRemoveOverlaps` takes an initial set of overlapping circles

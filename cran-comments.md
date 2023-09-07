@@ -1,12 +1,6 @@
-## Resubmission
-
-Re-formatted NEWS.md to address NOTE in previous submission about missing
-NEWS items. Also fixed fixed format of a DOI citation.
-
 ## Summary
 
-This submission updates the version number for the suggested package ggiraph
-to fix an error that with building one of the vignettes.
+Address roxygen change for valid package documentation as advised by CRAN
 
 ## Test environments
 

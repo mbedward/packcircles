@@ -1,3 +1,7 @@
+# packcircles 0.3.6 (2023-09-05)
+
+* Fix: Minor change to conform to CRAN package doc conventions.
+
 # packcircles 0.3.5 (2022-11-23)
 
 * Fix: Updated ggiraph dependency to version 0.8.4 to fix error when building
