@@ -5,7 +5,8 @@
 \alias{bacteria}
 \title{Abundance of bacteria}
 \format{
-A data frame with 167 rows and 3 variables:
+## `bacteria`
+A data frame with 167 rows and 3 columns:
 \describe{
   \item{value}{measured abundance}
   \item{colour}{preferred colour for display}
