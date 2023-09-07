@@ -11,11 +11,8 @@
 #'  \item{circleGraphLayout}{Finds an arrangement of circles conforming to
 #'    a graph specification.}
 #' }
-#' 
-#' @docType package
-#' @name packcircles
-#' 
+#'
 #' @importFrom Rcpp sourceCpp
 #' @useDynLib packcircles, .registration = TRUE
 #' 
-NULL
+"_PACKAGE"

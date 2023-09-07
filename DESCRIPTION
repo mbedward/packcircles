@@ -1,9 +1,9 @@
 Package: packcircles
 Type: Package
-Version: 0.3.5
+Version: 0.3.6
 Title: Circle Packing
 Description: Algorithms to find arrangements of non-overlapping circles.
-Date: 2022-11-22
+Date: 2023-09-05
 Authors@R: c(
   person("Michael", "Bedward", role = c("aut", "cre"), email = "michael.bedward@gmail.com"),
   person("David", "Eppstein", role = "aut", email = "david.eppstein@gmail.com", 
