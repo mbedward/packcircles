@@ -47,7 +47,12 @@ the [PADS](https://www.ics.uci.edu/~eppstein/PADS/) library.
 To install:
 
 * the latest released version: `install.packages("packcircles")`
-* the latest development version: `install_github("mbedward/packcircles")`
+* the latest development version (usually the same): `install_github("mbedward/packcircles")`
+
+See also:
+
+The [ggcirclepack](https://github.com/EvaMaeRey/ggcirclepack) package
+which makes it easier to add circles created with at least one of the `packcircles` 
+functions to ggplot2 graphs.
 
 Share and enjoy!
-
