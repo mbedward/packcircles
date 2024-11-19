@@ -219,7 +219,7 @@ if (requireNamespace("ggiraph")) {
     
     coord_equal()
   
-  ggiraph::ggiraph(ggobj = gg, width_svg = 5, height_svg = 5)
+  ggiraph::girafe(ggobj = gg, width_svg = 5, height_svg = 5)
   
 }
 
