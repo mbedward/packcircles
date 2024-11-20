@@ -47,7 +47,7 @@ the [PADS](https://www.ics.uci.edu/~eppstein/PADS/) library.
 To install:
 
 * the latest released version: `install.packages("packcircles")`
-* the latest development version (usually the same): `install_github("mbedward/packcircles")`
+* the latest development version (usually the same): `remotes::install_github("mbedward/packcircles")`
 
 See also:
 

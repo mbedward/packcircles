@@ -1,3 +1,8 @@
+# packcircles 0.3.6.9000 (2024-11-20)
+
+* Update progressive packing vignette example to use ggiraph::girafe() function
+  (thanks to David Gohel).
+
 # packcircles 0.3.6 (2023-09-05)
 
 * Fix: Minor change to conform to CRAN package doc conventions.

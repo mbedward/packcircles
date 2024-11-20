@@ -1,9 +1,9 @@
 Package: packcircles
 Type: Package
-Version: 0.3.6
+Version: 0.3.6.9000
 Title: Circle Packing
 Description: Algorithms to find arrangements of non-overlapping circles.
-Date: 2023-09-05
+Date: 2024-11-20
 Authors@R: c(
   person("Michael", "Bedward", role = c("aut", "cre"), email = "michael.bedward@gmail.com"),
   person("David", "Eppstein", role = "aut", email = "david.eppstein@gmail.com", 
@@ -24,5 +24,5 @@ VignetteBuilder: knitr
 LinkingTo: Rcpp (>= 1.0.0)
 LazyData: true
 License: MIT + file LICENSE
-RoxygenNote: 7.2.3
+RoxygenNote: 7.3.2
 Encoding: UTF-8
