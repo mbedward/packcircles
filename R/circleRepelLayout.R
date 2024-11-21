@@ -6,15 +6,14 @@
 #' bounding rectangle. If no such arrangement can be found within the specified 
 #' maximum number of iterations, the last attempt is returned.
 #' 
-#' The algorithm is adapted from a demo written in the Processing language by 
-#' Sean McCullough (this no longer seems to be available online).
-#' Each circle in the input data is compared to those following it. If two 
-#' circles overlap, they are moved apart such that the distance moved by each is
-#' proportional to the radius of the other, loosely simulating inertia. So when 
-#' a small circle is overlapped by a larger circle, the small circle moves 
-#' furthest. This process is repeated until no more movement takes place 
-#' (acceptable layout) or the maximum number of iterations is reached (layout 
-#' failure).
+#' The algorithm is adapted from a demonstration app written in the Processing
+#' language by Sean McCullough (no longer available online). Each circle in the
+#' input data is compared to those following it. If two circles overlap, they
+#' are moved apart such that the distance moved by each is proportional to the
+#' radius of the other, loosely simulating inertia. So when a small circle is
+#' overlapped by a larger circle, the small circle moves furthest. This process
+#' is repeated until no more movement takes place (acceptable layout) or the
+#' maximum number of iterations is reached (layout failure).
 #' 
 #' To avoid edge effects, the bounding rectangle can be treated as a toroid by 
 #' setting the \code{wrap} argument to \code{TRUE}. With this option, a circle 
@@ -38,8 +37,8 @@
 #' @param xysizecols The integer indices or names of the columns in \code{x} 
 #'   for the centre x-y coordinates and sizes of circles. This argument is
 #'   ignored if \code{x} is a vector.  If \code{x} is a matrix or data frame
-#'   but does not contain initial x-y coordinates, this can be indicated as
-#'   \code{xysizecols = c(NA, NA, 1)} for example.
+#'   but does not contain initial x-y coordinates, this must be indicated as
+#'   \code{xysizecols = c(NA, NA, 1)}.
 #'   
 #' @param sizetype The type of size values: either \code{"area"} or \code{"radius"}.
 #'   May be abbreviated.
@@ -82,15 +81,27 @@ circleRepelLayout <- function(x, xlim, ylim,
 
   if (is.matrix(x)) x <- as.data.frame(x)
   
+  checkmate::assert_int(maxiter, lower = 1)
+  checkmate::assert_flag(wrap)
+  
   # get circle sizes and centre coordinates
   if (is.data.frame(x)) {
+    .check_col_index(sizecol, x)
     sizes <- as.numeric(x[[sizecol]])
     
-    if (is.na(xcol)) xcentres <- .initial_ordinates(length(sizes), xlim) 
-    else xcentres <- as.numeric(x[[xcol]])
+    if (is.na(xcol)) {
+      xcentres <- .initial_ordinates(length(sizes), xlim) 
+    } else {
+      .check_col_index(xcol, x)
+      xcentres <- as.numeric(x[[xcol]])
+    }
     
-    if (is.na(ycol)) ycentres <- .initial_ordinates(length(sizes), ylim) 
-    else ycentres <- as.numeric(x[[ycol]])
+    if (is.na(ycol)) {
+      ycentres <- .initial_ordinates(length(sizes), ylim) 
+    } else {
+      .check_col_index(ycol, x)
+      ycentres <- as.numeric(x[[ycol]])
+    }
   }
   else {
     # x is a vector of circle sizes
@@ -99,7 +110,6 @@ circleRepelLayout <- function(x, xlim, ylim,
     ycentres <- .initial_ordinates(length(sizes), ylim)
   }
   
-
   if (any(sizes <= 0, na.rm = TRUE)) {
     sizes[ sizes <= 0 ] <- NA
   }
@@ -109,10 +119,8 @@ circleRepelLayout <- function(x, xlim, ylim,
   
   if (any(missing)) warning("missing and/or non-positive sizes will be ignored")
   
-  
   # convert sizes from area to radii if required
   if (sizetype == "area") sizes <- sqrt(sizes / pi)
-  
   
   # Matrix to pass to Rcpp
   xyr <- matrix( c(xcentres, ycentres, sizes), ncol = 3)
@@ -259,4 +267,16 @@ circleLayout <- function(xyr, xlim, ylim,
                     xysizecols = 1:3,
                     sizetype = "radius",
                     maxiter, wrap, weights)
+}
+
+
+# Check that a scalar value is a valid integer index or name for a 
+# data frame column
+#
+.check_col_index <- function(x, df) {
+  if (is.numeric(x)) {
+    checkmate::assert_int(x, lower = 1, upper = ncol(df))
+  } else if (is.character(x)) {
+    checkmate::assert_subset(x, colnames(df))
+  } 
 }

@@ -1,9 +1,9 @@
 Package: packcircles
 Type: Package
-Version: 0.3.6.9000
+Version: 0.3.7
 Title: Circle Packing
 Description: Algorithms to find arrangements of non-overlapping circles.
-Date: 2024-11-20
+Date: 2024-11-21
 Authors@R: c(
   person("Michael", "Bedward", role = c("aut", "cre"), email = "michael.bedward@gmail.com"),
   person("David", "Eppstein", role = "aut", email = "david.eppstein@gmail.com", 
@@ -14,7 +14,8 @@ Authors@R: c(
 URL: https://github.com/mbedward/packcircles
 BugReports: https://github.com/mbedward/packcircles/issues
 Depends: R (>= 3.2)
-Imports: Rcpp (>= 1.0.0)
+Imports: Rcpp (>= 1.0.0),
+  checkmate
 Suggests: ggiraph (>= 0.8.4),
   ggplot2, 
   knitr,

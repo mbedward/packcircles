@@ -54,5 +54,10 @@
 #' @export
 #' 
 circleGraphLayout <- function(internal, external) {
+  checkmate::assert_list(internal, types = "numeric", any.missing = FALSE, min.len = 1)
+  
+  if (is.matrix(external)) external <- as.data.frame(external)
+  checkmate::assert_data_frame(external, types = "numeric", any.missing = FALSE, ncols = 2)
+  
   doCirclePack(internal, external)
 }

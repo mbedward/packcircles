@@ -7,7 +7,7 @@
 circlePlotData(layout, npoints = 25, xyr.cols = 1:3, id.col = NULL)
 }
 \arguments{
-\item{layout}{A matrix or data.frame of circle data (x, y, radius). May contain
+\item{layout}{A matrix or data frame of circle data (x, y, radius). May contain
 other columns, including an optional ID column.}
 
 \item{npoints}{The number of vertices to generate for each circle.}
@@ -20,7 +20,7 @@ If not provided, the output circle IDs will be the row numbers of
 the input circle data.}
 }
 \value{
-A data.frame with columns: id, x, y; where id is the unique
+A data frame with columns: id, x, y; where id is the unique
   integer identifier for each circle.
 }
 \description{

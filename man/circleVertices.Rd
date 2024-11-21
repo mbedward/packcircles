@@ -7,13 +7,13 @@
 circleVertices(xc, yc, radius, npoints = 25)
 }
 \arguments{
-\item{xc}{Circle centre X ordinate.}
+\item{xc}{Value for centre X ordinate.}
 
-\item{yc}{Circle centre Y ordinate.}
+\item{yc}{Value for centre Y ordinate.}
 
-\item{radius}{Circle radius.}
+\item{radius}{Value for radius.}
 
-\item{npoints}{Number of distinct vertices required.}
+\item{npoints}{The number of distinct vertices required.}
 }
 \value{
 A 2-column matrix of X and Y values. The final row is a copy

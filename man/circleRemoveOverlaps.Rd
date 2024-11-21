@@ -44,10 +44,10 @@ remain fixed.
 \details{
 The \code{method} argument specifies whether to use the heuristic algorithm or
 linear programming. The following options select the heuristic algorithm and
-specify how to choose an overlapping circle for rejection at each iteration: 
+specify how to choose an overlapping circle to remove at each iteration: 
   \describe{
     \item{maxov}{Choose one of the circles with the greatest number of overlaps.}
-    \item{minov}{Choose one of the circle with the least number of overlaps.}
+    \item{minov}{Choose one of the circles with the least number of overlaps.}
     \item{largest}{Choose one of the largest circles.}
     \item{smallest}{Choose one of the smallest circles.}
     \item{random}{Choose a circle at random.}

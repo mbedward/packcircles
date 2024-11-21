@@ -13,7 +13,7 @@ circleLayoutVertices(
 )
 }
 \arguments{
-\item{layout}{A matrix or data.frame of circle data (x, y, size). May also 
+\item{layout}{A matrix or data frame of circle data (x, y, size). May also 
 contain other columns including an optional identifier column.}
 
 \item{npoints}{The number of vertices to generate for each circle.}
@@ -24,25 +24,31 @@ centre Y and size values. Default is `c(1,2,3)`.}
 \item{sizetype}{The type of size values: either \code{"radius"} (default) or 
 \code{"area"}. May be abbreviated.}
 
-\item{idcol}{Optional index or name of column for circle identifiers. These 
-may be numeric or character but must be unique. If not provided, the output
-circle IDs will be the row numbers of the input circle data.}
+\item{idcol}{Optional index (integer) or name (character) of an input data
+column to use as circle identifier values in the \code{id} column of the
+output data frame. Identifier values may be numeric or character but must
+be unique. If not provided, the output circle identifiers will be the row
+numbers of the input circle data.}
 }
 \value{
-A data.frame with columns: id, x, y; where id is the unique integer 
-  identifier for each circle.
+A data frame with columns: id, x, y; where id is the unique integer
+  identifier for each circle. If no size values in the input \code{layout}
+  data are positive, a data frame with zero rows will be returned.
 }
 \description{
-Given a matrix or data frame for a circle layout, with columns for centre x-y
-coordinates and sizes, this function generates a data set of vertices which 
-can then be used with ggplot or base graphics functions.
+Given a matrix or data frame for a circle layout, with columns for centre X
+and Y coordinates and circle sizes, this function generates a data set of
+vertices which can then be used with ggplot or base graphics functions. If
+any of the size values in the input data are zero, negative or missing
+(\code{NA} or \code{NULL}), the corresponding circles will not be generated.
+This can be useful when displaying alternative subsets of circles.
 }
 \note{
-\strong{Input sizes are assumed to be radii}. This is slightly confusing
-  because the layout functions \code{circleRepelLayout} and 
+\strong{Input sizes are assumed to be radii}. This is slightly
+  confusing because the layout functions \code{circleRepelLayout} and
   \code{circleProgressiveLayout} treat their input sizes as areas by default.
-  To be safe, you can always set the \code{sizetype} argument explicitly
-  for both this function and layout functions.
+  To be safe, you can always set the \code{sizetype} argument explicitly for
+  both this function and layout functions.
 }
 \examples{
 xmax <- 100

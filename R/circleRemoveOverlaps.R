@@ -6,10 +6,10 @@
 #' 
 #' The \code{method} argument specifies whether to use the heuristic algorithm or
 #' linear programming. The following options select the heuristic algorithm and
-#' specify how to choose an overlapping circle for rejection at each iteration: 
+#' specify how to choose an overlapping circle to remove at each iteration: 
 #'   \describe{
 #'     \item{maxov}{Choose one of the circles with the greatest number of overlaps.}
-#'     \item{minov}{Choose one of the circle with the least number of overlaps.}
+#'     \item{minov}{Choose one of the circles with the least number of overlaps.}
 #'     \item{largest}{Choose one of the largest circles.}
 #'     \item{smallest}{Choose one of the smallest circles.}
 #'     \item{random}{Choose a circle at random.}
@@ -89,11 +89,22 @@ circleRemoveOverlaps <- function(x,
       if (tolerance <= 0) stop("tolerance must be positive (default is 1.0)")
     }
     
+    if (is.matrix(x)) x <- as.data.frame(x)
+    checkmate::assert_data_frame(x, min.cols = 3)
+    
+    if (is.numeric(xysizecols)) {
+      checkmate::assert_integer(xysizecols, lower = 1, upper = ncol(x), any.missing = FALSE, len = 3)
+    } else if (is.character(xysizecols)) {
+      checkmate::assert_character(xysizecols, any.missing = FALSE, len = 3)
+      checkmate::assert_subset(xysizecols, colnames(x))
+    } 
+    
+    # Check the input data again to validate types
+    checkmate::assert_data_frame(x[, xysizecols], types = "numeric")
+    
     xcol <- xysizecols[1]
     ycol <- xysizecols[2]
     sizecol <- xysizecols[3]
-
-    if (is.matrix(x)) x <- as.data.frame(x)
     
     # get circle sizes and centre coordinates
     sizes <- as.numeric(x[[sizecol]])

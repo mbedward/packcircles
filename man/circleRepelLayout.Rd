@@ -33,8 +33,8 @@ vector will result in unbounded movement in the Y direction.}
 \item{xysizecols}{The integer indices or names of the columns in \code{x} 
 for the centre x-y coordinates and sizes of circles. This argument is
 ignored if \code{x} is a vector.  If \code{x} is a matrix or data frame
-but does not contain initial x-y coordinates, this can be indicated as
-\code{xysizecols = c(NA, NA, 1)} for example.}
+but does not contain initial x-y coordinates, this must be indicated as
+\code{xysizecols = c(NA, NA, 1)}.}
 
 \item{sizetype}{The type of size values: either \code{"area"} or \code{"radius"}.
 May be abbreviated.}
@@ -65,15 +65,14 @@ bounding rectangle. If no such arrangement can be found within the specified
 maximum number of iterations, the last attempt is returned.
 }
 \details{
-The algorithm is adapted from a demo written in the Processing language by 
-Sean McCullough (this no longer seems to be available online).
-Each circle in the input data is compared to those following it. If two 
-circles overlap, they are moved apart such that the distance moved by each is
-proportional to the radius of the other, loosely simulating inertia. So when 
-a small circle is overlapped by a larger circle, the small circle moves 
-furthest. This process is repeated until no more movement takes place 
-(acceptable layout) or the maximum number of iterations is reached (layout 
-failure).
+The algorithm is adapted from a demonstration app written in the Processing
+language by Sean McCullough (no longer available online). Each circle in the
+input data is compared to those following it. If two circles overlap, they
+are moved apart such that the distance moved by each is proportional to the
+radius of the other, loosely simulating inertia. So when a small circle is
+overlapped by a larger circle, the small circle moves furthest. This process
+is repeated until no more movement takes place (acceptable layout) or the
+maximum number of iterations is reached (layout failure).
 
 To avoid edge effects, the bounding rectangle can be treated as a toroid by 
 setting the \code{wrap} argument to \code{TRUE}. With this option, a circle 
