@@ -1,11 +1,12 @@
 ## Summary
 
-Minor update to ensure valid package documentation as advised by CRAN
+Minor updates to fix problem in vignette, as advised by CRAN, and add validity
+checks to function arguments
 
 ## Test environments
 
-  * MacOS 12.6.7 (release)
-  * Ubuntu 22.04.3 LTS (release and devel)
+  * MacOS 14.7 (release)
+  * Ubuntu 22.04.5 LTS (release and devel)
   * win-builder (release and devel)
 
 ## R CMD check results
